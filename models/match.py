@@ -1,9 +1,9 @@
 class Match:
-    def __init__(self, team1, team2, completed, winner_id=None, id=None):
+    def __init__(self, team1, team2, completed, winner=None, id=None):
         self.team1 = team1
         self.team2 = team2
         self.completed = completed
-        self.winner_id = winner_id
+        self.winner = winner
         self.id = id
 
 

@@ -6,3 +6,11 @@ class Team:
         self.matches_played = matches_played
         self.wins = wins
         self.id = id
+
+    #  increment matches played
+    def update(self, result):
+        self.matches_played += 1
+        if result:
+            self.wins += 1
+
+    #  train and improve skill ratings
