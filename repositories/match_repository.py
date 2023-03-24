@@ -41,10 +41,11 @@ def select_all():
 
 
 # view matches by team id
+#  TODO - this not returning anything - WHY?
 def select_by_team(id):
     matches = []
-    sql = "SELECT * FROM matches WHERE team2_id = %s"
-    values = [id]
+    sql = "SELECT * FROM matches WHERE team1_id = %s OR team2_id = %s"
+    values = [id, id]
     results = run_sql(sql, values)
 
     for result in results:

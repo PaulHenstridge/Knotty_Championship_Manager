@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for team in teams %}
+<div class="team-info-container">
+    <h3>{{team.name}}</h3>
+    <h4>Played: {{team.matches_played}} Won: {{team.wins}}</h4>
+    <a href="/teams/{{team.id}}"> More details about {{team.name}}</a>
+
+</div>
+
+{% endfor %}
+{% endblock %}

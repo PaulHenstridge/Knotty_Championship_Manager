@@ -27,6 +27,7 @@ def select_all():
             result["defence"],
             result["matches_played"],
             result["wins"],
+            result["id"],
         )
         teams.append(team)
     return teams
