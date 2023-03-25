@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for match in matches %}
+<h2>{{match.team1.name}} V {{match.team2.name}}</h2>
+{% if match.completed %}
+<h4>The winer was {{match.winner}}</h4>
+{% else %}
+
+<form action="/matches/play" method="POST">
+    <!-- passing the match id back tothe server so it can retrieve data from DB -->
+    <input type="number" name="match-id" id="match-id" value="{{match.id}}">
+    <button>Play Match</button>
+</form>
+{% endif %}
+{% endfor %}
+{% endblock %}

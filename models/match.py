@@ -6,12 +6,19 @@ class Match:
         self.winner = winner
         self.id = id
 
+    def play(self):
+        winner = None
+        self.team1.matches_played += 1
+        self.team2.matches_played += 1
+        if self.team1.attack > self.team2.defence:
+            winner = self.team1
+        else:
+            winner = self.team2
+        winner.wins += 1
+        self.winner = winner
 
-def play_match():
-    pass
+    # return winner.name
 
-
-# TODO - should it be winner id above or the team object??
 
 # decide the winner of the match
 # update relevant statistics

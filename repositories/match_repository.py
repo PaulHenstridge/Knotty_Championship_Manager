@@ -7,20 +7,22 @@ import repositories.team_repository as team_repository
 
 
 # create a new match
-def save(team1, team2):
+def save(team1_id, team2_id):
     match = None
     sql = """
     INSERT INTO matches (team1_id, team2_id, completed, winner_id) 
     VALUES (%s,%s,%s,%s)
     RETURNING id
     """
-    values = [team1.id, team2.id, "f", None]
+    values = [team1_id, team2_id, "f", None]
+
+    team1 = team_repository.select(team1_id)
+    team2 = team_repository.select(team2_id)
 
     result = run_sql(sql, values)
     return Match(team1, team2, False, None, result[0]["id"])
     # TODO - increment matches played & won
     # make play_match() method on the match class
-    # return a Match object above?
 
 
 # view all matches
@@ -64,9 +66,10 @@ def select(id):
     match = None
     sql = "SELECT * FROM matches WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)
+    results = run_sql(sql, values)
 
-    if result:
+    if results:
+        result = results[0]
         team1 = team_repository.select(result["team1_id"])
         team2 = team_repository.select(result["team2_id"])
         winner = team_repository.select(result["winner_id"])
