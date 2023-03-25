@@ -33,6 +33,9 @@ def play():
 
     match = match_repository.select(int(match_id))
     match.play()
+    match_repository.update(match)
+    team_repository.update(match.team1)
+    team_repository.update(match.team2)
     return render_template("/matches/match.html", match=match)
 
 

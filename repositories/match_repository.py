@@ -80,10 +80,10 @@ def select(id):
 # update a match after the result is known
 
 
-def update(match, winner):
+def update(match):
     sql = """UPDATE matches SET (completed, winner_id) = ('t', %s)
     WHERE id = %s"""
-    values = [winner.id, match.id]
+    values = [match.winner.id, match.id]
     run_sql(sql, values)
 
 

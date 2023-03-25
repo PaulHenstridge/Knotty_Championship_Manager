@@ -67,9 +67,10 @@ def delete(id):
 # edit a teams details
 def update(team):
     sql = """
-
+    UPDATE teams SET (matches_played, wins) = (%s, %s)
+    WHERE id = %s
     """
-    values = []
+    values = [team.matches_played, team.wins, team.id]
     results = run_sql(sql, values)
 
 

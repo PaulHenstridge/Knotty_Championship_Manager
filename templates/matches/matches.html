@@ -4,7 +4,7 @@
 {% for match in matches %}
 <h2>{{match.team1.name}} V {{match.team2.name}}</h2>
 {% if match.completed %}
-<h4>The winer was {{match.winner}}</h4>
+<h4>The winer was {{match.winner.name}}</h4>
 {% else %}
 
 <form action="/matches/play" method="POST">

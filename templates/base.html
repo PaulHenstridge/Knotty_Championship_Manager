@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
     <title>Knotty League</title>
 </head>
 
@@ -19,9 +22,12 @@
             <a href="/matches/new">Schedule a new match</a>
         </menu>
     </header>
-    {% block content %}
+    <div class="content-container">
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
+
+    </div>
 
     <footer>
         <h5>Footer stuff</h5>

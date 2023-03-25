@@ -16,6 +16,7 @@ class Match:
             winner = self.team2
         winner.wins += 1
         self.winner = winner
+        self.completed = True
 
     # return winner.name
 
