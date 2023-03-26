@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Edit the details of {{team.name}} below</h3>
+
+<form action="/teams/edit" method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="{{team.name}}" placeholder="{{team.name}}">
+    <label for="attack">Attack</label>
+    <input type="number" name="attack" id="attack" value="{{team.attack}}" placeholder="{{team.attack}}">
+    <label for="defence">Defence</label>
+    <input type="number" name="defence" id="defence" value="{{team.defence}}" placeholder="{{team.defence}}">
+    <label for="matches_played">Matches Played</label>
+    <input type="number" name="matches_played" id="matches_played" value="{{team.matches_played}}"
+        placeholder="{{team.matches_played}}">
+    <label for="wins">Wins</label>
+    <input type="number" name="wins" id="wins" value="{{team.wins}}" placeholder="{{team.wins}}">
+    <button type="submit">SUBMIT</button>
+</form>
+{% endblock %}

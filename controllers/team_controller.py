@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 
 import repositories.team_repository as team_repository
@@ -39,4 +39,23 @@ def add_team():
 @teams_blueprint.route("/teams/<id>")
 def team_by_id(id):
     team = team_repository.select(id)
+    return render_template("/teams/team.html", team=team)
+
+
+@teams_blueprint.route("/teams/<id>/edit")
+def edit(id):
+    team = team_repository.select(id)
+    return render_template("/teams/edit.html", team=team)
+
+
+@teams_blueprint.route("/teams/edit", methods=["POST"])
+def edit_team():
+    name = request.form["name"]
+    attack = request.form["attack"]
+    defence = request.form["defence"]
+    matches_played = request.form["matches_played"]
+    wins = request.form["wins"]
+
+    team = Team(name, attack, defence, matches_played, wins)
+    team_repository.update(team)
     return render_template("/teams/team.html", team=team)

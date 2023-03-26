@@ -10,6 +10,7 @@ class Match:
         winner = None
         self.team1.matches_played += 1
         self.team2.matches_played += 1
+
         if self.team1.attack > self.team2.defence:
             winner = self.team1
         else:
@@ -17,10 +18,3 @@ class Match:
         winner.wins += 1
         self.winner = winner
         self.completed = True
-
-    # return winner.name
-
-
-# decide the winner of the match
-# update relevant statistics
-#

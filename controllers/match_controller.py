@@ -32,10 +32,13 @@ def play():
     match_id = request.form["match-id"]
 
     match = match_repository.select(int(match_id))
+    # print("BEFORE", match.winner.id)
     match.play()
+    print("AFTER", match.id)
+
     match_repository.update(match)
-    team_repository.update(match.team1)
-    team_repository.update(match.team2)
+    team_repository.update_stats(match.team1)
+    team_repository.update_stats(match.team2)
     return render_template("/matches/match.html", match=match)
 
 

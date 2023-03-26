@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for team in teams %}
-<div class="team-info-container">
-    <h3>{{team.name}}</h3>
-    <h4>Played: {{team.matches_played}} Won: {{team.wins}}</h4>
-    <a href="/teams/{{team.id}}"> More details about {{team.name}}</a>
-
+<div class="team-grid-container header">
+    <div class="col-header"></div>
+    <div class="col-header">Attack</div>
+    <div class="col-header">Defence</div>
+    <div class="col-header">Played</div>
+    <div class="col-header">Won</div>
 </div>
+{% for team in teams %}
+<div class="team-grid-container">
+    <h3>{{team.name}}</h3>
+    <h4> {{team.attack}}</h4>
+    <h4>{{team.defence}}</h4>
+    <h4> {{team.matches_played}}</h4>
+    <h4>{{team.wins}}</h4>
+    <a href="/teams/{{team.id}}"> <i class="fa fa-info-circle" aria-hidden="true"></i></a>
+</div>
+
+
+
 
 {% endfor %}
 {% endblock %}

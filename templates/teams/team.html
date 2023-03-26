@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{team["name"]}}</h1>
-<h3>{{team["wins"]}} wins</h3>
+
+<div class="stats">
+    <h3>Attack: {{team.attack}}</h3>
+    <h3>Defence: {{team.defence}}</h3>
+    <h3>{{team["wins"]}} wins in {{team.matches_played}} matches played</h3>
+</div>
+
+<div class="buttons">
+    <a href="/teams/{{team.id}}/edit">Edit {{team.name}}</a> <a href="/teams/{{team.id}}/delete">Delete {{
+        team.name}}</a>
+</div>
+
 {% endblock %}

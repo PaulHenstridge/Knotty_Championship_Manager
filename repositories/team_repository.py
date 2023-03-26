@@ -64,14 +64,32 @@ def delete(id):
     run_sql(sql, values)
 
 
-# edit a teams details
+# edit/update a team
+
+
 def update(team):
+    sql = """
+    UPDATE teams SET (name, attack, defence, matches_played, wins) = (%s,%s,%s,%s, %s)
+    WHERE id = %s
+    """
+    values = [
+        team.name,
+        team.attack,
+        team.defence,
+        team.matches_played,
+        team.wins,
+        team.id,
+    ]
+
+
+# update team stats after match result is known
+def update_stats(team):
     sql = """
     UPDATE teams SET (matches_played, wins) = (%s, %s)
     WHERE id = %s
     """
     values = [team.matches_played, team.wins, team.id]
-    results = run_sql(sql, values)
+    run_sql(sql, values)
 
 
 # delete all teams from the league
