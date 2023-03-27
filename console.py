@@ -21,7 +21,7 @@ import repositories.match_repository as match_repository
 # team6 = team_repository.select(6)
 # team7 = team_repository.select(7)
 
-match_repository.delete_all()
+# match_repository.delete_all()
 
 # match1 = match_repository.save(team1, team3)
 # match2 = match_repository.save(team3, team2)

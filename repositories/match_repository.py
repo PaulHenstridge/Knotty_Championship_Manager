@@ -54,7 +54,7 @@ def select_by_team(id):
         team1 = team_repository.select(result["team1_id"])
         team2 = team_repository.select(result["team2_id"])
         winner = team_repository.select(result["winner_id"])
-        match = Match(team1, team2, result["completed"], winner)
+        match = Match(team1, team2, result["completed"], winner, id=result["id"])
         matches.append(match)
     return matches
 
@@ -77,7 +77,6 @@ def select(id):
     return match
 
 
-#  TODO - completed matches still coming up ready to play on all matches. WHY?
 # update a match after the result is known
 def update(match):
     sql = """UPDATE matches SET (completed, winner_id) = ('t', %s)

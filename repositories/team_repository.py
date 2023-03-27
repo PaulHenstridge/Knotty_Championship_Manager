@@ -80,6 +80,7 @@ def update(team):
         team.wins,
         team.id,
     ]
+    run_sql(sql, values)
 
 
 # update team stats after match result is known

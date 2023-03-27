@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form action="/matches/new" method="POST">
+<form action="/matches/new" method="POST" class="input-form">
     <label for="team1">Team1</label>
     <select name="team1" id="team1">
         {% for team in all_teams %}

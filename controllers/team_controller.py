@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 
 import repositories.team_repository as team_repository
+import repositories.match_repository as match_repository
 
 from models.team import Team
 
@@ -55,7 +56,20 @@ def edit_team():
     defence = request.form["defence"]
     matches_played = request.form["matches_played"]
     wins = request.form["wins"]
+    id = request.form["id"]
 
-    team = Team(name, attack, defence, matches_played, wins)
+    team = Team(name, attack, defence, matches_played, wins, id)
     team_repository.update(team)
     return render_template("/teams/team.html", team=team)
+
+
+@teams_blueprint.route("/teams/<id>/matches")
+def matches_by_team(id):
+    matches = match_repository.select_by_team((id))
+    return render_template("/matches/matches.html", matches=matches)
+
+
+@teams_blueprint.route("/teams/<id>/delete")
+def delete(id):
+    team_repository.delete(id)
+    return redirect("/teams")

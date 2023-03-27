@@ -1,24 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="match-grid-container">
-    <div class="col-header">Match</div>
-    <div class="col-header">Outcome</div>
-</div>
 {% for match in matches %}
-<div class="match-grid-container">
-    <h2>{{match.team1.name}} V {{match.team2.name}} id: {{match.id}}</h2>
+<div class="match-container">
+    <h2>Match {{match.id}} - {{match.team1.name}} V {{match.team2.name}}</h2>
     {% if match.completed %}
-    <h4>The winer was {{match.winner.name}}</h4>
+    <h4>The winner was {{match.winner.name}}</h4>
+    <h5>{{match.winner.name}} has won {{match.winner.wins}} matches out of {{match.winner.matches_played}}</h5>
     {% else %}
 
     <form action="/matches/play" method="POST">
         <!-- passing the match id back tothe server so it can retrieve data from DB -->
         <input type="number" name="match-id" id="match-id" value="{{match.id}}">
-        <button>Play Match</button>
+        <button class="play-btn">Play Match</button>
     </form>
+    {% endif %}
 </div>
-
-{% endif %}
 {% endfor %}
 {% endblock %}

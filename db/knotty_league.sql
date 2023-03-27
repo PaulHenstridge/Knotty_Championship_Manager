@@ -13,8 +13,8 @@ CREATE TABLE teams (
 
 CREATE TABLE matches (
     id SERIAL PRIMARY KEY,
-    team1_id INT NOT NULL REFERENCES teams(id),
-    team2_id INT NOT NULL REFERENCES teams(id),
+    team1_id INT NOT NULL REFERENCES teams(id) ON DELETE CASCADE,
+    team2_id INT NOT NULL REFERENCES teams(id) ON DELETE CASCADE,
     completed BOOLEAN,
     winner_id INT
 );
