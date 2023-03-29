@@ -2,6 +2,7 @@
     /* fonts */
     --ff-title: 'Bebas Neue', cursive;
     --ff-main: 'Special Elite', cursive;
+    --ff-text: 'Signika Negative', sans-serif;
 
     /* colors */
     --clr-accent: #ffaa00;
@@ -168,10 +169,14 @@ button {
     border: 2px solid black;
     width: 100%;
     border-bottom: 2px solid blue;
-    margin-top: 2%;
+    /* margin-bottom: 2%; */
     outline: 2px solid black;
     box-shadow: -5px 5px 3px rgba(31, 30, 30, 0.655);
     background-color: rgba(240, 248, 255, 0.506);
+}
+
+.match-container:hover {
+    background-color: var(--clr-accent);
 }
 
 .input-form {
@@ -204,10 +209,29 @@ select {
     margin-bottom: 4rem;
 }
 
+label {
+    font-family: var(--ff-text);
+}
+
+p {
+    font-family: var(--ff-text);
+    text-align: justify;
+}
+
 .hidden {
     display: none;
 }
 
 .link {
     margin-right: 3rem;
+}
+
+.return-link {
+    margin-top: 1rem;
+}
+
+/* home page */
+.harbour {
+    float: left;
+    margin: 0.5rem;
 }

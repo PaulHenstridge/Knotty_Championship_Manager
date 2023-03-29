@@ -18,7 +18,7 @@ def save(team):
 # show all teams in league
 def select_all():
     teams = []
-    sql = "SELECT * FROM teams"
+    sql = "SELECT * FROM teams ORDER BY wins DESC"
     results = run_sql(sql)
     for result in results:
         team = Team(

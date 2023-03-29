@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1 class="f-title">{{team["name"]}}</h1>
+<div class="match-container">
+    <h1 class="f-title">{{team["name"]}}</h1>
 
-<div class="stats">
-    <h3>Attack: {{team.attack}}</h3>
-    <h3>Defence: {{team.defence}}</h3>
-    <h3>{{team["wins"]}} wins in {{team.matches_played}} matches played</h3>
+    <div class="stats">
+        <h3>Attack: {{team.attack}}</h3>
+        <h3>Defence: {{team.defence}}</h3>
+        <h3>{{team["wins"]}} wins in {{team.matches_played}} matches played</h3>
+    </div>
+
+    <div class="buttons">
+        <a class="f-title link" href="/teams/{{team.id}}/edit">Edit</a>
+        <a class="f-title link" href="/teams/{{team.id}}/delete">Delete</a>
+        <a class="f-title link" href="/teams/{{team.id}}/matches">View matches</a>
+    </div>
 </div>
 
-<div class="buttons">
-    <a class="f-title link" href="/teams/{{team.id}}/edit">Edit</a>
-    <a class="f-title link" href="/teams/{{team.id}}/delete">Delete</a>
-    <a class="f-title link" href="/teams/{{team.id}}/matches">View matches</a>
-</div>
 
 {% endblock %}

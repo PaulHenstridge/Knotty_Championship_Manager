@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2> Welcome to the Knotty World Championships</h2>
+<h2> Welcome to the Knotty World Championship Simulator</h2>
+
+
+<img src="{{ url_for('static', filename='images/harbour.png') }}" alt="Lybster Harbour" class="harbour">
 
 <p>From Wikipedia- <br><br>
     The game of knotty is a Scottish team sport. It is a variation of the game of shinty as played in the fishing
@@ -19,7 +22,10 @@
     Bert Mowat, found a copy containing the few rules of the sport wedged between the pages of a Gaelic bible in a
     bedroom.
 </p>
-
-
-<img src="http://placekitten.com/200/300" alt="">
+<img src="{{ url_for('static', filename='images/game1.png') }}" alt="Knotty action" class="game1">
+<img src="{{ url_for('static', filename='images/game2.png') }}" alt="Knotty action" class="game2">
+<img src="{{ url_for('static', filename='images/game3.png') }}" alt="Knotty action" class="game3">
+<img src="{{ url_for('static', filename='images/game4.png') }}" alt="Knotty action" class="game4">
+<img src="{{ url_for('static', filename='images/team1.png') }}" alt="Knotty team" class="team1">
+<img src="{{ url_for('static', filename='images/team2.png') }}" alt="Knotty team" class="team2">
 {% endblock %}
