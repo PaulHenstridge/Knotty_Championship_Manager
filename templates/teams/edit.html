@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>Edit the details of {{team.name}} below</h3>
+<h3>Edit the details of {{team.name}}</h3>
 
-<form action="/teams/edit" method="post">
+<form action="/teams/edit" method="post" class="input-form">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" value="{{team.name}}" placeholder="{{team.name}}">
     <label for="attack">Attack</label>

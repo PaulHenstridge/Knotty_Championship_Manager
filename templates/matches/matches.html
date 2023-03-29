@@ -11,7 +11,7 @@
 
     <form action="/matches/play" method="POST">
         <!-- passing the match id back tothe server so it can retrieve data from DB -->
-        <input type="number" name="match-id" id="match-id" value="{{match.id}}">
+        <input type="number" name="match-id" id="match-id" value="{{match.id}}" class="hidden">
         <button class="play-btn">Play Match</button>
     </form>
     {% endif %}

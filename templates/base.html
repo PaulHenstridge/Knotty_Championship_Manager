@@ -9,13 +9,19 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&display=swap" rel="stylesheet">
 
-    <title>Knotty League</title>
+    <title class="f-title">Knotty League</title>
 </head>
 
 <body>
     <header>
-        <h1>HOMEPAGE 👍</h1>
+        <div class="logo">
+            <span>Knotty</span>
+            <span>World Championships</span>
+        </div>
         <menu>
             <a href="/">Home</a>
             <a href="/teams">View all teams</a>
