@@ -23,8 +23,6 @@ def new_team():
 
 
 # add new team
-
-
 @teams_blueprint.route("/teams/new", methods=["POST"])
 def add_team():
     name = request.form["team-name"]

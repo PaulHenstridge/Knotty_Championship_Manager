@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from controllers.team_controller import teams_blueprint
 from controllers.match_controller import matches_blueprint
 
-# importt controllers
+# import controllers
 app = Flask(__name__)
 
 # register blueprints
