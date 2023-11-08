@@ -30,72 +30,74 @@ class Match:
 
         while opportunities[0] and opportunities[1]:
             #randomly generate an index 0 or 1. 
-            idx = random.radint(0,1)
-                    # if opportunites for returned index are none, try other index, 
+            idx = random.randint(0,1)
+             # if opportunites for returned index are none, try other index, 
             if not opportunities[idx]:
                 idx ^ 1 # using XOR operator
 
                 # use index to decrement opportunities
             opportunities[idx] -=1
                 # and call attempt_on_goal(). 
-            self.attempt_on_goal(teams[idx])
+            is_goal = self.attempt_on_goal(teams[idx], teams[idx^1])
+
+            
+            self.generate_report(self.team1, self.team2, is_goal)
+
 
 
         # call generate_report() on each attempt, so reports are created in order
 
 
-        for opportunity in range(round(team1_opportunities)):
-            chance_of_scoring = 50 + (self.team1.attack - self.team2.defence)
-            if chance_of_scoring < 5:
-                chance_of_scoring = 5
-            if chance_of_scoring > 95:
-                chance_of_scoring = 95
+        # for opportunity in range(round(team1_opportunities)):
+        #     chance_of_scoring = 50 + (self.team1.attack - self.team2.defence)
+        #     if chance_of_scoring < 5:
+        #         chance_of_scoring = 5
+        #     if chance_of_scoring > 95:
+        #         chance_of_scoring = 95
 
-            shot = random.random() * 100
-            if shot < chance_of_scoring:
-                self.match_score[0] += 1
-                self.generate_report(self.team1, self.team2, True)
-            else:
-                self.generate_report(self.team1, self.team2, False)
+        #     shot = random.random() * 100
+        #     if shot < chance_of_scoring:
+        #         self.match_score[0] += 1
+        #         self.generate_report(self.team1, self.team2, True)
+        #     else:
+        #         self.generate_report(self.team1, self.team2, False)
 
-        for opportunity in range(round(team2_opportunities)):
-            chance_of_scoring = 50 + (self.team2.attack - self.team1.defence)
-            if chance_of_scoring < 5:
-                chance_of_scoring = 5
-            if chance_of_scoring > 95:
-                chance_of_scoring = 95
+        # for opportunity in range(round(team2_opportunities)):
+        #     chance_of_scoring = 50 + (self.team2.attack - self.team1.defence)
+        #     if chance_of_scoring < 5:
+        #         chance_of_scoring = 5
+        #     if chance_of_scoring > 95:
+        #         chance_of_scoring = 95
 
-            shot = random.random() * 100
-            if shot < chance_of_scoring:
-                self.match_score[1] += 1
-                self.generate_report(self.team2, self.team1, True)
-            else:
-                self.generate_report(self.team2, self.team1, False)
+        #     shot = random.random() * 100
+        #     if shot < chance_of_scoring:
+        #         self.match_score[1] += 1
+        #         self.generate_report(self.team2, self.team1, True)
+        #     else:
+        #         self.generate_report(self.team2, self.team1, False)
 
-        print("match score", self.match_score)
-        # draw setled by penalties
-        if self.match_score[0] == self.match_score[1]:
-            self.match_score[round(random.random())] += 1
-            self.penalties = True
+        # print("match score", self.match_score)
 
-        if self.match_score[0] > self.match_score[1]:
-            winner = self.team1
-        else:
-            winner = self.team2
+
+        self.handle_draw()
+
+        winner = self.declare_winner()
+
+
         winner.wins += 1
         self.winner = winner
         self.completed = True
         # random.shuffle(self.report)
         # split report at length of team1_opportunities, into 2 lists
-        list1 = self.report[: math.floor(team1_opportunities)]
-        list2 = self.report[math.ceil(team1_opportunities) :]
+        # list1 = self.report[: math.floor(team1_opportunities)]
+        # list2 = self.report[math.ceil(team1_opportunities) :]
 
-        self.report = [
-            item
-            for pair in zip_longest(list1, list2)
-            for item in pair
-            if item is not None
-        ]
+        # self.report = [
+        #     item
+        #     for pair in zip_longest(list1, list2)
+        #     for item in pair
+        #     if item is not None
+        # ]
 
         # classic alternative to above list comprehension
         # shuffled_list = []
@@ -104,8 +106,8 @@ class Match:
         #         if item is not None:
         #             shuffled_list.append(item)
 
-    def generate_report(self, team, other_team, goal):
-        if goal:
+    def generate_report(self, team, other_team, is_goal):
+        if is_goal:
             message = score_reports[
                 math.floor(random.random() * len(score_reports))
             ].format(
@@ -123,7 +125,7 @@ class Match:
 
     def calc_opportunities(self):
         
-        return [self.team1.attack + self.team1.defence, self.team2.attack + self.team2.defence]
+        return [(self.team1.attack + self.team1.defence) / 10, (self.team2.attack + self.team2.defence) / 10]
 
         # t1_advantage = self.team1.attack - self.team2.defence
         # t2_advantage = self.team2.attack - self.team1.defence
@@ -133,6 +135,27 @@ class Match:
         # #  if advantage is over 10, team gets 10 + 20% of the remainder
         # return t1 if t1 < 10 else math.ceil(10 + (t1-10) / 5), t2 if t2 < 10 else math.ceil(10 + (t2 - 10)/5)
 
-    def attempt_on_goal(self,team):
-        #TODO - this
-        pass
+    def attempt_on_goal(self,attacking_team, defending_team):
+            chance_of_scoring = 50 + (attacking_team.attack - defending_team.defence)
+            if chance_of_scoring < 5:
+                chance_of_scoring = 5
+            if chance_of_scoring > 95:
+                chance_of_scoring = 95
+
+            shot = random.random() * 100
+            if shot < chance_of_scoring:
+                self.match_score[0] += 1
+                return True
+            else:
+                return False
+        
+    def handle_draw(self):
+                # draw setled by penalties
+        if self.match_score[0] == self.match_score[1]:
+            self.match_score[round(random.random())] += 1
+            self.penalties = True
+
+    def declare_winner(self):
+        return self.team1 if self.match_score[0] > self.match_score[1] else self.team2
+
+    
