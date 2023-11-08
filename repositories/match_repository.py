@@ -21,8 +21,7 @@ def save(team1_id, team2_id):
 
     result = run_sql(sql, values)
     return Match(team1, team2, False, None, result[0]["id"])
-    # TODO - increment matches played & won
-    # make play_match() method on the match class
+
 
 
 # view all matches

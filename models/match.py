@@ -20,10 +20,29 @@ class Match:
         self.team1.matches_played += 1
         self.team2.matches_played += 1
 
-        team1_opportunities, team2_opportunities = self.calc_opportunities()
-     
+        # put opportunities in a list and teams in another list.
+        opportunities = self.calc_opportunities()
+        teams = [ self.team1, self.team2]
 
-        print("team1:", team1_opportunities, "team2:", team2_opportunities)
+        print("team1:", opportunities[0], "team2:", opportunities[1])
+
+
+
+        while opportunities[0] and opportunities[1]:
+            #randomly generate an index 0 or 1. 
+            idx = random.radint(0,1)
+                    # if opportunites for returned index are none, try other index, 
+            if not opportunities[idx]:
+                idx ^ 1 # using XOR operator
+
+                # use index to decrement opportunities
+            opportunities[idx] -=1
+                # and call attempt_on_goal(). 
+            self.attempt_on_goal(teams[idx])
+
+
+        # call generate_report() on each attempt, so reports are created in order
+
 
         for opportunity in range(round(team1_opportunities)):
             chance_of_scoring = 50 + (self.team1.attack - self.team2.defence)
@@ -103,11 +122,17 @@ class Match:
 
 
     def calc_opportunities(self):
-      
-        t1_advantage = self.team1.attack - self.team2.defence
-        t2_advantage = self.team2.attack - self.team1.defence
-        print("t1/t2 advantage", t1_advantage, t2_advantage)
-        # if advantage is <=0 default to 3 lucky chances
-        t1, t2 = t2_advantage*-1 if  t1_advantage <= 0 else t1_advantage , t1_advantage*-1 if t2_advantage <= 0 else t2_advantage
-        #  if advantage is over 10, team gets 10 + 20% of the remainder shots
-        return t1 if t1 < 10 else math.ceil(10 + (t1-10) / 5), t2 if t2 < 10 else math.ceil(10 + (t2 - 10)/5)
+        
+        return [self.team1.attack + self.team1.defence, self.team2.attack + self.team2.defence]
+
+        # t1_advantage = self.team1.attack - self.team2.defence
+        # t2_advantage = self.team2.attack - self.team1.defence
+        # print("t1/t2 advantage", t1_advantage, t2_advantage)
+        # # if advantage is <=0 default to 3 lucky chances
+        # t1, t2 = t2_advantage*-1 if  t1_advantage <= 0 else t1_advantage , t1_advantage*-1 if t2_advantage <= 0 else t2_advantage
+        # #  if advantage is over 10, team gets 10 + 20% of the remainder
+        # return t1 if t1 < 10 else math.ceil(10 + (t1-10) / 5), t2 if t2 < 10 else math.ceil(10 + (t2 - 10)/5)
+
+    def attempt_on_goal(self,team):
+        #TODO - this
+        pass
