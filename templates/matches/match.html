@@ -6,10 +6,12 @@
     <h4>The winner was {{match.winner.name}}</h4>
     <h4>Final Score: {{match.match_score[0]}} - {{match.match_score[1]}}</h4>
     {% if match.penalties%} <h5>On Penalties</h5> {% endif %}
+    <div class="report">
+        {% for item in match.report%}
+        <p>{{ item }}</p>
+        {% endfor %}
+    </div>
 
-    {% for item in match.report%}
-    <p>{{ item }}</p>
-    {% endfor %}
 
     {% else %}
 

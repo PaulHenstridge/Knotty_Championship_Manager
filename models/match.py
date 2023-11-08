@@ -1,5 +1,6 @@
 import random
 import math
+from itertools import zip_longest
 from utils.action_reports import *
 
 
@@ -19,13 +20,20 @@ class Match:
         self.team1.matches_played += 1
         self.team2.matches_played += 1
 
-        team1_opportunities = (self.team1.defence + self.team1.defence) / 10
-        team2_opportunities = (self.team2.defence + self.team2.defence) / 10
+        team1_opportunities, team2_opportunities = self.calc_opportunities()
+     
+
+        print("team1:", team1_opportunities, "team2:", team2_opportunities)
 
         for opportunity in range(round(team1_opportunities)):
             chance_of_scoring = 50 + (self.team1.attack - self.team2.defence)
+            if chance_of_scoring < 5:
+                chance_of_scoring = 5
+            if chance_of_scoring > 95:
+                chance_of_scoring = 95
+
             shot = random.random() * 100
-            if shot > chance_of_scoring:
+            if shot < chance_of_scoring:
                 self.match_score[0] += 1
                 self.generate_report(self.team1, self.team2, True)
             else:
@@ -33,12 +41,18 @@ class Match:
 
         for opportunity in range(round(team2_opportunities)):
             chance_of_scoring = 50 + (self.team2.attack - self.team1.defence)
+            if chance_of_scoring < 5:
+                chance_of_scoring = 5
+            if chance_of_scoring > 95:
+                chance_of_scoring = 95
+
             shot = random.random() * 100
-            if shot > chance_of_scoring:
+            if shot < chance_of_scoring:
                 self.match_score[1] += 1
                 self.generate_report(self.team2, self.team1, True)
             else:
                 self.generate_report(self.team2, self.team1, False)
+
         print("match score", self.match_score)
         # draw setled by penalties
         if self.match_score[0] == self.match_score[1]:
@@ -53,6 +67,23 @@ class Match:
         self.winner = winner
         self.completed = True
         # random.shuffle(self.report)
+        # split report at length of team1_opportunities, into 2 lists
+        list1 = self.report[: math.floor(team1_opportunities)]
+        list2 = self.report[math.ceil(team1_opportunities) :]
+
+        self.report = [
+            item
+            for pair in zip_longest(list1, list2)
+            for item in pair
+            if item is not None
+        ]
+
+        # classic alternative to above list comprehension
+        # shuffled_list = []
+        # for pair in zip_longest(list1, list2):
+        #     for item in pair:
+        #         if item is not None:
+        #             shuffled_list.append(item)
 
     def generate_report(self, team, other_team, goal):
         if goal:
@@ -69,3 +100,14 @@ class Match:
             ].format(team_name=team.name, other_team_name=other_team.name)
 
         self.report.append(message)
+
+
+    def calc_opportunities(self):
+      
+        t1_advantage = self.team1.attack - self.team2.defence
+        t2_advantage = self.team2.attack - self.team1.defence
+        print("t1/t2 advantage", t1_advantage, t2_advantage)
+        # if advantage is <=0 default to 3 lucky chances
+        t1, t2 = t2_advantage*-1 if  t1_advantage <= 0 else t1_advantage , t1_advantage*-1 if t2_advantage <= 0 else t2_advantage
+        #  if advantage is over 10, team gets 10 + 20% of the remainder shots
+        return t1 if t1 < 10 else math.ceil(10 + (t1-10) / 5), t2 if t2 < 10 else math.ceil(10 + (t2 - 10)/5)

@@ -207,6 +207,13 @@ button {
     background-color: var(--clr-accent);
 }
 
+.report {
+    background-color: rgb(122, 175, 132);
+    width: 90%;
+    margin: auto;
+}
+
+
 .input-form {
     padding: 15% 20% 20% 20%;
     width: 90%;
