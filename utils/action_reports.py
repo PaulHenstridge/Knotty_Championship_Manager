@@ -6,7 +6,7 @@ score_reports = [
     "{team_name} attacking from wide, early ball to the striker, GOAL!  - {score}",
     "{team_name} try a long range shot, and its in!  what a goal!  - {score}",
     "{other_team_name} try to play out of defence, but take a stick to the face.... GOAL for {team_name}!!  - {score}",
-    "insane knotty skills from {team_name}, sublime violence... and its a GOAL!!"
+    "insane knotty skills from {team_name}, sublime violence... and its a GOAL!! {score}"
 ]
 
 miss_reports = [

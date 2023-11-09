@@ -70,7 +70,7 @@ header {
 
 .logo>span {
     white-space: nowrap;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 
     @media(max-width:580px) {
         font-size: 1rem;
@@ -203,14 +203,21 @@ button {
     background-color: rgba(240, 248, 255, 0.506);
 }
 
-.match-container:hover {
-    background-color: var(--clr-accent);
-}
 
 .report {
-    background-color: rgb(122, 175, 132);
+    background-color: #2F4858;
+    color: var(--clr-accent);
     width: 90%;
     margin: auto;
+    padding:1.6rem;
+
+}
+
+.report > h3 {
+    color: #6495ed;
+    text-align: center;
+    font-size: 1.4rem;
+    text-decoration: underline;
 }
 
 
@@ -251,10 +258,15 @@ label {
 p {
     font-family: var(--ff-text);
     text-align: justify;
+    margin: 0.5rem;
+
 }
 
-.hidden {
-    display: none;
+.headline {
+    font-family: var(--ff-title);
+    letter-spacing: 0.08em;
+    font-size: 1.8rem;
+    margin-left: 0.5rem;
 }
 
 .link {
@@ -268,5 +280,16 @@ p {
 /* home page */
 .harbour {
     float: left;
-    margin: 0.5rem;
+}
+
+img {
+    max-width: calc(100% - 0.5rem);
+    height: auto;
+    object-fit: contain;
+    margin-left: 0.5rem;
+  }
+  
+
+.hidden {
+    display: none;
 }

@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="match-container">
-    <h3>{{match.team1.name}} V {{match.team2.name}}</h3>
+    <h2>{{match.team1.name}} V {{match.team2.name}}</h2>
     {% if match.completed %}
     <h4>The winner was {{match.winner.name}}</h4>
     <h4>Final Score: {{match.match_score[0]}} - {{match.match_score[1]}}</h4>
     {% if match.penalties%} <h5>On Penalties</h5> {% endif %}
+
     <div class="report">
+        <h3>Match Report</h3>
         {% for item in match.report%}
         <p>{{ item }}</p>
         {% endfor %}
