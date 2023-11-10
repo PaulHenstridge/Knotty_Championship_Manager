@@ -40,7 +40,7 @@ def team_by_id(id):
     team = team_repository.select(id)
     return render_template("/teams/team.html", team=team)
 
-
+# show edit team form
 @teams_blueprint.route("/teams/<id>/edit")
 def edit(id):
     team = team_repository.select(id)

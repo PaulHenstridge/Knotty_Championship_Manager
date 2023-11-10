@@ -59,8 +59,6 @@ def select_by_team(id):
 
 
 # view an individual match
-
-
 def select(id):
     match = None
     sql = "SELECT * FROM matches WHERE id = %s"

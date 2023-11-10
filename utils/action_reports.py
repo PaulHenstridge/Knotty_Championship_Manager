@@ -6,7 +6,8 @@ score_reports = [
     "{team_name} attacking from wide, early ball to the striker, GOAL!  - {score}",
     "{team_name} try a long range shot, and its in!  what a goal!  - {score}",
     "{other_team_name} try to play out of defence, but take a stick to the face.... GOAL for {team_name}!!  - {score}",
-    "insane knotty skills from {team_name}, sublime violence... and its a GOAL!! {score}"
+    "insane knotty skills from {team_name}, sublime violence... and its a GOAL!! - {score}"
+    "{team_name}s goalkeeper is advancig up the field! He finds a team mate ... GOAL!!! - {score}"
 ]
 
 miss_reports = [
@@ -16,4 +17,6 @@ miss_reports = [
     "Solid defence from {team_name} to clear the danger",
     "{team_name} slice down the {other_team_name} attacker with a brutal chop to the legs",
     "Surely a goal for {other_team_name}... its WIDE!  how did he miss that?",
+    "{team_name} dominate in midfield. Their striker is free... Ouch, smashed to the ground!"
+    "{other_team_name} are sitting back, absorbing the pressure."
 ]
