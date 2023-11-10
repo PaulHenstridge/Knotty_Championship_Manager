@@ -11,6 +11,7 @@ This application provides a simulation of a sports league, in which teams play m
 - **Team Management**: Add new teams to the league, edit their details, or remove teams no longer participating.
 - **Match Scheduling**: Set up matches between teams at specified times.
 - **League Table**: Keep track of team standings in the league based on match results.
+- **Live Action Match Reports**:View reports of all the action.
 
 ## Tech Stack
 
