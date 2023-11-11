@@ -4,11 +4,12 @@ A RESTful, full-stack application that simulates a sports league, using Python, 
 
 ## Overview
 
-This application provides a simulation of a sports league, in which teams play matches against each other and compete in a league. Users can create, read, update, and delete (CRUD) teams, edit their attributes, and schedule matches between them. Teams are represented in a league table based on match results.
+This application provides a simulation of a sports league, in which teams play matches against each other and compete in a league. Users can create, read, update, and delete (CRUD) both teams and individual players, and schedule matches between them. Simulated matches feature a match report of the action, and progress is shown on the league table based on cumulative match results.
 
 ## Features
 
 - **Team Management**: Add new teams to the league, edit their details, or remove teams no longer participating.
+- **Player Management**: Add and remove players from teams, edit players details and attributes.
 - **Match Scheduling**: Set up matches between teams at specified times.
 - **League Table**: Keep track of team standings in the league based on match results.
 - **Live Action Match Reports**:View reports of all the action.
@@ -37,8 +38,8 @@ Clone the repo
 Create the database
 ``` createdb knotty_league```
 
-Run the sql file
-```python3 db/knotty_league.sql```
+Run the sql file (from the root directory)
+```psql -d knotty_league -f db/knotty_league.sql```
 
 Start the application
 ```python3 app.py```
