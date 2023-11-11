@@ -19,7 +19,7 @@ def save(player):
 def select_all():
     players = []
     sql = """
-        SELECT players.name, players.position, players.skill_level, teams.name AS team_name, teams.id
+        SELECT players.name, players.id, players.position, players.skill_level, teams.name AS team_name, teams.id AS team_id
         FROM players 
         JOIN teams ON players.team_id = teams.id
       """
@@ -30,7 +30,8 @@ def select_all():
             result["position"],
             result["skill_level"],
             result["team_name"],
-            result["team_id"]          
+            result["team_id"],
+            result["id"]       
         )
         players.append(player)
     return players
@@ -40,7 +41,7 @@ def select_all():
 def select(id):
     player = None
     sql = """
-        SELECT players.name, players.position, players.skill_level, teams.name AS team_name , teams.id
+        SELECT players.name, players.id, players.position, players.skill_level, teams.name AS team_name , teams.id AS team_id
         FROM players 
         JOIN teams ON players.team_id = teams.id
         WHERE players.id = %s
@@ -55,7 +56,8 @@ def select(id):
             result["position"],
             result["skill_level"],
             result["team_name"],
-            result["team_id"]  
+            result["team_id"],
+            result["id"]
         )
     return player
 

@@ -13,4 +13,23 @@ class Team:
         if result:
             self.wins += 1
 
-    #  train and improve skill ratings
+    def generate_team(self):
+        #loop * 10
+            # new Player:
+                # list of first_names and a list of second_names
+                    # randomly select one from each
+                #choose atacker or defender
+                # random skill level
+                # self.name and self.id
+            # add player to DB
+            # add to a List on self
+        pass
+
+    def calculate_skill_levels(self):
+        # go through the List of players
+            # sum the total skill for attackers and defenders
+            # set self.attack , self.defence
+
+        pass
+
+ #  TODO - train players and improve skill ratings

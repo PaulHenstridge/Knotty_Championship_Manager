@@ -27,19 +27,24 @@ def new_player():
 # add new player
 @players_blueprint.route("/players/new", methods=["POST"])
 def add_player():
-    print(request.form)
-    name = request.form["player_name"]
-    position = request.form["position"]
-    skill_level = request.form["skill"]
-    team_name = request.form["team_name"]
-    team_id = request.form["team_id"]
+    try:
+        print("in add player ",request.form)
+        name = request.form["player_name"]
+        position = request.form["position"]
+        skill_level = request.form["skill"]
 
-    # create new player obj
-    player = Player(name, position, skill_level, team_name, team_id)
-    print("player to be added: ",player)
-    player_repository.save(player)
-    return render_template("/players/player.html", player=player)
+        team_info = request.form["team"].split("|")
+        team_id = team_info[0]
+        team_name = team_info[1]
 
+        # create new player obj
+        player = Player(name, position, skill_level, team_name, team_id)
+        print("player to be added: ",player)
+        player_repository.save(player)
+        return render_template("/players/player.html", player=player)
+    except Exception as e:
+        print("Error: ", e)
+        return str(e), 400
 
 # show a player by id
 @players_blueprint.route("/players/<id>")
@@ -56,13 +61,14 @@ def edit(id):
 
 @players_blueprint.route("/players/edit", methods=["POST"])
 def edit_player():
-    name = request.form["player_name"]
+    name = request.form["name"]
     position = request.form["position"]
     skill_level = request.form["skill"]
     team_id = request.form["team_id"]
+    id = request.form["id"]
 
     # create new player obj
-    player = Player(name, position, skill_level, team_id)
+    player = Player(name, position, skill_level, team_id, id)
     player_repository.update(player)
     return render_template("/players/player.html", player=player)
 

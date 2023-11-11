@@ -16,7 +16,6 @@ class Match:
         self.report = []
 
     def play(self):
-        winner = None
         teams = [ self.team1, self.team2]
         opportunities = self.calc_opportunities()
         print("oportunities ", opportunities)
@@ -38,10 +37,8 @@ class Match:
 
         self.handle_draw()
 
-        winner = self.declare_winner()
-
-        winner.wins += 1
-        self.winner = winner
+        self.winner = self.declare_winner()
+        self.winner.wins += 1
         self.completed = True
 
 
