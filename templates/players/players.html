@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="team-grid-container tbl-header">
+    <div class="col-header"></div>
+    <!-- <div class="col-header">Name</div> -->
+    <div class="col-header">Position</div>
+    <div class="col-header">Skill</div>
+    <div class="col-header">Team</div>
+
+</div>
+{% for player in players %}
+<div class="team-grid-container">
+    <h3>{{player.name}}</h3>
+    <h4> {{player.position}}</h4>
+    <h4>{{player.skill_level}}</h4>
+    <h4> {{player.team_name}}</h4>
+    
+    <a href="/players/{{player.id}}"> <i class="fa fa-info-circle" aria-hidden="true"></i></a>
+</div>
+
+
+
+
+{% endfor %}
+{% endblock %}

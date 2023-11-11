@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 from controllers.team_controller import teams_blueprint
 from controllers.match_controller import matches_blueprint
+from controllers.player_controller import players_blueprint
 
 # import controllers
 app = Flask(__name__)
@@ -8,6 +9,7 @@ app = Flask(__name__)
 # register blueprints
 app.register_blueprint(teams_blueprint)
 app.register_blueprint(matches_blueprint)
+app.register_blueprint(players_blueprint)
 
 
 @app.route("/")

@@ -38,7 +38,7 @@ def select_all():
 
 # show an individual player by id
 def select(id):
-    tplayeream = None
+    player = None
     sql = """
         SELECT players.name, players.position, players.skill_level, teams.name AS team_name 
         FROM players 

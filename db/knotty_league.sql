@@ -38,7 +38,7 @@ INSERT INTO teams (name, attack, defence, matches_played, wins)
 VALUES ('Kiess', 45, 55, 0, 0);
 
 INSERT INTO matches (team1_id, team2_id, completed, winner_id)
-VALUES (1,2,'t','1')
+VALUES (1,2,'t',1);
 
 INSERT INTO players (name, position, skill_level, team_id) 
 VALUES ('John Doe', 'Attacker', 80, 1);
