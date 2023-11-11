@@ -1,6 +1,7 @@
 class Player:
-    def __init__(self, name, position, skill_level, team_id):
+    def __init__(self, name, position, skill_level, team_name, team_id):
         self.name = name 
         self.position = position
         self.skill_level = skill_level
-        self.team_id = team_id
+        self.team_name = team_name
+        self.team_id - team_id

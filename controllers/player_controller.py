@@ -20,19 +20,23 @@ def all_players():
 # show add a new player form
 @players_blueprint.route("/players/new")
 def new_player():
-    return render_template("players/new.html")
+    teams = team_repository.select_all()
+    return render_template("players/new.html", teams=teams)
 
 
 # add new player
 @players_blueprint.route("/players/new", methods=["POST"])
 def add_player():
-    name = request.form["name"]
+    print(request.form)
+    name = request.form["player_name"]
     position = request.form["position"]
-    skill_level = request.form["skill_level"]
+    skill_level = request.form["skill"]
+    team_name = request.form["team_name"]
     team_id = request.form["team_id"]
 
     # create new player obj
-    player = Player(name, position, skill_level, team_id)
+    player = Player(name, position, skill_level, team_name, team_id)
+    print("player to be added: ",player)
     player_repository.save(player)
     return render_template("/players/player.html", player=player)
 
@@ -52,9 +56,9 @@ def edit(id):
 
 @players_blueprint.route("/players/edit", methods=["POST"])
 def edit_player():
-    name = request.form["name"]
+    name = request.form["player_name"]
     position = request.form["position"]
-    skill_level = request.form["skill_level"]
+    skill_level = request.form["skill"]
     team_id = request.form["team_id"]
 
     # create new player obj
