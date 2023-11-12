@@ -6,17 +6,87 @@ score_reports = [
     "{team_name} attacking from wide, early ball to the striker, GOAL!  - {score}",
     "{team_name} try a long range shot, and its in!  what a goal!  - {score}",
     "{other_team_name} try to play out of defence, but take a stick to the face.... GOAL for {team_name}!!  - {score}",
-    "insane knotty skills from {team_name}, sublime violence... and its a GOAL!! - {score}"
-    "{team_name}s goalkeeper is advancig up the field! He finds a team mate ... GOAL!!! - {score}"
+    "insane knotty skills from {team_name}, sublime violence... and its a GOAL!! - {score}",
+    "{team_name}s goalkeeper is advancing up the field! He finds a team mate ... GOAL!!! - {score}",
+    "{other_team_name}s keeper is caught in no mans land!  A high lob out of defence... Its a GOAL!!! - {score}",
+
+    "{team_name} scores with an unstoppable header! - {score} The stadium erupts in cheers.",
+    "A slick pass and {team_name} slots it home! - {score} They're writing history tonight.",
+    "{team_name}'s long-range effort finds the net! - {score} An absolute screamer of a goal!",
+    "A masterclass in finishing by {team_name}! - {score} The fans can't believe their eyes.",
+    "A clever flick by {team_name} and it's a goal! - {score} Pure genius on the field.",
+    "{team_name} outmaneuvers the defense and scores! - {score} They're dancing in the streets tonight.",
+    "A stunning free-kick by {team_name}! - {score} An artwork of football mastery.",
+    "With a burst of speed, {team_name} scores! - {score} Unbelievable pace and skill.",
+    "{team_name} converts the penalty. Cool as you like! - {score} Ice runs through their veins.",
+    "A diving header by {team_name}! Goal! - {score} The crowd goes wild with excitement.",
+    "{team_name} with a silky smooth dribble and goal! - {score} A moment of pure magic.",
+    "In a flash, {team_name} turns and scores! - {score} Lightning fast and deadly accurate.",
+    "A volley from {team_name} rockets into the net! - {score} The keeper had no chance.",
+    "A breathtaking solo effort by {team_name} ends in a goal! - {score} They've stolen the show!",
+    "{team_name} outplays everyone and scores! - {score} A display of sheer brilliance.",
+    "A powerful drive from {team_name} rips into the net! - {score} That strike was from another planet!",
+    "With a swivel and a strike, {team_name} sends the ball flying in! - {score} A goal that will be remembered for ages.",
+    "A ballet of footwork from {team_name} culminates in a goal! - {score} Poetry in motion on the pitch.",
+    "In a daring display, {team_name} flicks it past the keeper! - {score} A moment of audacious creativity.",
+    "A relentless assault from {team_name} finally pays off with a goal! - {score} They've been knocking on the door all game.",
+    "With a spark of genius, {team_name} splits the defense and scores! - {score} Tactical brilliance and skill combined."
+
+    "{other_team_name} press ahead, but a brutal smash to the kidneys drops their player to the floor. {team_name} pick up the ball and move rapidly down the right wing. It goes to the striker ... GOAL!!! - {score}",
+    "{other_team_name}'s goalkeeper ventures far out, only to trip over his own feet! {team_name} seizes the moment, a quick one-two and they slot it home! The crowd erupts as the net bulges - GOAL!!! - {score}",
+    "{other_team_name} tries a risky pass in midfield, but it's intercepted! {team_name} charges forward, a dazzling display of footwork and finesse. A thunderous strike and it's in the back of the net - GOAL!!! - {score}",
+    "{other_team_name}'s defense is in disarray, struggling with a flurry of sticks and elbows. {team_name} exploits the chaos, a sharp pass to the striker who doesn't miss. A blistering goal that leaves the keeper stunned - GOAL!!! - {score}",
+    "The ball is loose after a fierce tackle on an {other_team_name} midfielder. {team_name} pounces, a rapid sprint, a cross, and a spectacular header! The fans are on their feet - GOAL!!! - {score}",
+    "In a daring move, {other_team_name}'s defender attempts a backheel pass but fluffs it. {team_name}'s winger snatches it, darts past two defenders, and with a swish, it's a beautiful goal - GOAL!!! - {score}",
+    "{other_team_name}'s forward fumbles the ball at a crucial moment. {team_name} capitalizes, breaking away with speed. A precise shot from the edge of the box, and it's a goal! - GOAL!!! - {score}",
+    "{other_team_name} looks strong on the attack, but their striker's showboating costs them. {team_name} intercepts, a swift counter-attack, a strike from distance, and it's a screamer! - GOAL!!! - {score}",
+    "After a failed corner kick, {other_team_name} leaves their goal vulnerable. {team_name} takes advantage, a long pass, a sprint, and a sublime chip over the keeper - GOAL!!! - {score}",
+    "{other_team_name} is caught napping as their defender misjudges a header. {team_name} is quick to react, a lob to the forward who volleys it in mid-air. The net shakes - it's a magnificent goal! - GOAL!!! - {score}",
+    "{other_team_name}'s goalie parries a shot but sends it straight to a {team_name} player. A quick adjustment, a powerful kick, and the ball finds its way home - GOAL!!! - {score}"
+
 ]
 
 miss_reports = [
-    "{team_name} scramble to keep {other_team_name} from scoring",
-    "{other_team_name} attack but {team_name}'s defence are up to it",
-    "{other_team_name} have ther ball, they SHOOT... but {team_name} block the shot",
-    "Solid defence from {team_name} to clear the danger",
-    "{team_name} slice down the {other_team_name} attacker with a brutal chop to the legs",
-    "Surely a goal for {other_team_name}... its WIDE!  how did he miss that?",
-    "{team_name} dominate in midfield. Their striker is free... Ouch, smashed to the ground!"
-    "{other_team_name} are sitting back, absorbing the pressure."
+    " {other_team_name} scramble to keep {team_name}from scoring",
+    "{team_name} attack but {other_team_name}'s defence are up to it",
+    "{team_name} have ther ball, they SHOOT... but {other_team_name} block the shot",
+    "Solid defence from {other_team_name} to clear the danger",
+    "{other_team_name} slice down the {team_name} attacker with a brutal chop to the legs",
+    "Surely a goal for {team_name}... its WIDE!  how did he miss that?",
+    "{team_name} dominate in midfield. Their striker is free... Ouch, smashed to the ground by the {othrt_team_name} enforcer!"
+    "{other_team_name} are sitting back, absorbing the pressure.",
+
+    "{team_name} fires a cannonball, but it's just over the bar! The fans hold their heads in disbelief.",
+    "A heart-stopping moment as {team_name} hits the post! So close yet so far.",
+    "{team_name} tries a flashy move, but it fizzles out. A moment of promise ends in frustration.",
+    "The goal was gaping, but {team_name} couldn't find the finish. A golden opportunity missed.",
+    "A heroic block by {other_team_name} denies a certain goal. Incredible defensive play.",
+    "A close call as {team_name}'s shot whizzes past the post! The tension is palpable.",
+    "A gasp from the crowd as {team_name} narrowly misses the target. An agonizing miss.",
+    "The net beckoned, but {team_name} fluffs their lines. They'll be ruing that miss.",
+    "A scorching shot from {team_name} but it's straight at the keeper! A moment of relief for {other_team_name}.",
+    "A collective sigh as {team_name} misses a golden opportunity. The fans are left in disbelief.",
+    "The ball is in the net, but no! {team_name} is offside! A moment of joy turns to disappointment.",
+    "{team_name} tries to bend it like a legend, but it's not to be. A valiant effort nonetheless.",
+    "A daring dribble from {team_name}, but the finish is lacking. They've let a great chance slip by.",
+    "Inches away! {team_name}'s attempt skims the crossbar. The crowd is on the edge of their seats.",
+    "{team_name}'s striker stumbles at the crucial moment. The goal was theirs for the taking.",
+    "A thunderous strike from {team_name}, but it's off target. The fans can only wonder 'what if'.",
+    "With flair and finesse, {team_name} goes for glory, but it's not their day. A missed opportunity.",
+    "A deceptive move by {team_name}, but the shot lacks conviction. A sigh of frustration echoes.",
+    "{team_name} with a chance to level, but the shot sails high. The pressure is mounting.",
+    "A moment of brilliance from {team_name}, but the finish doesn't match. So close yet so far.",
+    "A twist, a turn, but {team_name}'s shot is wide. The crowd groans in unison."
+
+    "{other_team_name} mounts a formidable defense, repelling {team_name}'s aggressive advances. A fierce tackle sends the ball spinning away. {team_name} regroups but the shot is off target - the chance is lost!",
+    "{other_team_name} is on their heels but manages a desperate clearance. {team_name} recovers, a quick exchange of passes, but the final shot skews wide - no goal this time!",
+    "In a bold move, {other_team_name}'s keeper charges out, narrowly averting a sure goal. {team_name} tries to capitalize on the open net, but their shot sails over - a close miss!",
+    "The pressure is on as {other_team_name} battles hard in their box. {team_name}'s striker breaks through but is met with a wall of defenders. The shot is blocked - no goal!",
+    "{other_team_name} is playing with fire in their own half, but miraculously they fend off {team_name}'s attack. A powerful strike is deflected just wide of the post - the crowd gasps!",
+    "{other_team_name}'s last-ditch effort sees their defender sliding in to thwart {team_name}'s attack. The ball ricochets off the post - so close yet so far for {team_name}!",
+    "{other_team_name}'s goalie is on top form, diving to save a certain goal from {team_name}. The rebound falls to a forward, but his shot is rushed and off target!",
+    "As {team_name} surges forward, {other_team_name} pulls off a stunning defensive play. A goal seemed inevitable, but a heroic block keeps it 0-0!",
+    "{other_team_name} bends but doesn't break under {team_name}'s relentless pressure. An audacious attempt from distance, but it whistles past the post - no goal!",
+    "With {other_team_name} scrambling, {team_name} sees an opening. A thunderous strike looks promising, but it clatters off the crossbar - a heart-stopping moment but no goal!"
+
 ]
