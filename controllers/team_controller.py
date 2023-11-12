@@ -27,12 +27,17 @@ def new_team():
 @teams_blueprint.route("/teams/new", methods=["POST"])
 def add_team():
     name = request.form["team-name"]
-    attack = request.form["att"]
-    defence = request.form["def"]
-    # create new team obj
-    team = Team(name, attack, defence, 0, 0)
-    team_repository.save(team)
-    return render_template("/teams/team.html", team=team)
+    team = Team(name, 0, 0, 0, 0)
+
+    team_id = team_repository.save(team)
+    team.team_id = team_id
+    
+    new_players = team.generate_players()
+    team_repository.update(team)
+
+    for player in new_players:
+        player_repository.save(player)
+    return render_template("/teams/team.html", team=team, players=new_players)
 
 
 # show a team by id

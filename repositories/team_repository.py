@@ -13,6 +13,7 @@ def save(team):
     values = [team.name, team.attack, team.defence, team.matches_played, team.wins]
     results = run_sql(sql, values)
     team.id = results[0]["id"]
+    return team.id
 
 
 # show all teams in league

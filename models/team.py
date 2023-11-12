@@ -1,6 +1,6 @@
 import random
 
-from utils import generate_player
+from utils.generate_player import generate_player
 
 class Team:
     def __init__(self, name, attack, defence, matches_played, wins, id=None):
@@ -17,27 +17,22 @@ class Team:
         if result:
             self.wins += 1
 
-    def generate_team(self):
-  
+    def generate_players(self):
+        players = []
         for i in range(10):
-            player = generate_player(self.name, self.id)
+            player = generate_player(self.name, self.id, i)
+            players.append(player)
+        self.set_skill_levels(players)   
+
+        return players
 
 
-            # new Player:
-                # list of first_names and a list of second_names
-                    # randomly select one from each
-                #choose atacker or defender
-                # random skill level
-                # self.name and self.id
-            # add player to DB
-            # add to a List on self??  prob not...?
-        pass
+    def set_skill_levels(self, players):
+        for player in players:
+            if player.position == "Attack":
+                self.attack += player.skill_level
+            if player.position == "Defence":
+                self.defence += player.skill_level
 
-    def calculate_skill_levels(self):
-        # go through the List of players
-            # sum the total skill for attackers and defenders
-            # set self.attack , self.defence
-
-        pass
 
  #  TODO - train players and improve skill ratings
