@@ -3,6 +3,7 @@ from flask import Blueprint
 
 import repositories.team_repository as team_repository
 import repositories.match_repository as match_repository
+import repositories.player_repository as player_repository
 
 from models.team import Team
 
@@ -38,7 +39,8 @@ def add_team():
 @teams_blueprint.route("/teams/<id>")
 def team_by_id(id):
     team = team_repository.select(id)
-    return render_template("/teams/team.html", team=team)
+    players = player_repository.select_all_by_team_id(id)
+    return render_template("/teams/team.html", team=team, players=players)
 
 # show edit team form
 @teams_blueprint.route("/teams/<id>/edit")

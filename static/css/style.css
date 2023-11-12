@@ -134,10 +134,23 @@ button {
     font-family: var(--ff-title);
 }
 
+.player-grid-container{
+    display: grid;
+    grid-template-columns:6fr 2fr 2fr 2fr;
+    background-color: #ffaa00;
+    box-shadow: inset 4px 2px 6px #2c252577;
+    margin-bottom: 0.1rem;
+}
+
+.player-grid-container > span{
+    padding: 1rem;
+}
+
+
 .team-grid-container {
     font-family: var(--ff-title);
     display: grid;
-    grid-template-columns: 6fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 6fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr;
     border-bottom: 2px solid blue;
     margin-top: 2%;
     outline: 2px solid black;
@@ -188,6 +201,8 @@ button {
     }
 
 }
+
+
 
 .match-container {
     font-family: var(--ff-main);

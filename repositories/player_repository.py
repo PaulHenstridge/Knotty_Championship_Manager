@@ -36,6 +36,29 @@ def select_all():
         players.append(player)
     return players
 
+ # select all by team id
+def select_all_by_team_id(team_id):
+    players = []
+    sql = """
+        SELECT players.name, players.id, players.position, players.skill_level, teams.name AS team_name, teams.id AS team_id
+        FROM players 
+        JOIN teams ON players.team_id = teams.id
+        WHERE teams.id = %s
+      """
+    values = team_id
+    results = run_sql(sql,values)
+    for result in results:
+        player = Player(
+            result["name"],
+            result["position"],
+            result["skill_level"],
+            result["team_name"],
+            result["team_id"],
+            result["id"]       
+        )
+        players.append(player)
+    return players
+
 
 # show an individual player by id
 def select(id):
