@@ -37,7 +37,7 @@ score_reports = [
     "{other_team_name} tries a risky pass in midfield, but it's intercepted! {team_name} charges forward, a dazzling display of footwork and finesse. A thunderous strike and it's in the back of the net - GOAL!!! - {score}",
     "{other_team_name}'s defense is in disarray, struggling with a flurry of sticks and elbows. {team_name} exploits the chaos, a sharp pass to the striker who doesn't miss. A blistering goal that leaves the keeper stunned - GOAL!!! - {score}",
     "The ball is loose after a fierce tackle on an {other_team_name} midfielder. {team_name} pounces, a rapid sprint, a cross, and a spectacular header! The fans are on their feet - GOAL!!! - {score}",
-    "In a daring move, {other_team_name}'s defender attempts a backheel pass but fluffs it. {team_name}'s winger snatches it, darts past two defenders, and with a swish, it's a beautiful goal - GOAL!!! - {score}",
+    "In a daring move, {other_team_name}'s defender attempts a backwards somersault but fluffs it. {team_name}'s winger snatches it, darts past two defenders, and with a swish, it's a beautiful goal - GOAL!!! - {score}",
     "{other_team_name}'s forward fumbles the ball at a crucial moment. {team_name} capitalizes, breaking away with speed. A precise shot from the edge of the box, and it's a goal! - GOAL!!! - {score}",
     "{other_team_name} looks strong on the attack, but their striker's showboating costs them. {team_name} intercepts, a swift counter-attack, a strike from distance, and it's a screamer! - GOAL!!! - {score}",
     "After a failed corner kick, {other_team_name} leaves their goal vulnerable. {team_name} takes advantage, a long pass, a sprint, and a sublime chip over the keeper - GOAL!!! - {score}",

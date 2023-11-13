@@ -6,6 +6,7 @@ class Player:
         self.team_name = team_name
         self.team_id = team_id
         self.id = id
+        self.value = self.skill_level  *12.25
 
     def train(self):
         #self.skill_level += some_value

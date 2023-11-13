@@ -10,6 +10,7 @@ class Team:
         self.matches_played = matches_played
         self.wins = wins
         self.id = id
+        self.bank_balance = 10_000
 
     #  increment matches played
     def update(self, result):

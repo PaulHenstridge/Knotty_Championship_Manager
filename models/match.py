@@ -25,10 +25,8 @@ class Match:
         
         while opportunities[0] or opportunities[1]:
             idx = random.randint(0,1)
-            print('index start at ', idx)
             if not opportunities[idx]:
                 idx = idx ^ 1 
-                print("index flipped to ", idx)
             opportunities[idx] -=1
 
             is_goal = self.attempt_on_goal(teams[idx], teams[idx^1], idx)

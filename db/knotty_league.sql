@@ -27,6 +27,16 @@ CREATE TABLE players (
     team_id INT NOT NULL REFERENCES teams(id) ON DELETE CASCADE
 );
 
+CREATE TABLE transfers (
+    id SERIAL PRIMARY KEY,
+    player_id INT REFERENCES players(id),
+    team_from_id INT REFERENCES teams(id),
+    team_to_id INT REFERENCES teams(id),
+    transfer_fee INT,
+    status VARCHAR(20)
+);
+
+
 
 INSERT INTO teams (name, attack, defence, matches_played, wins) 
 VALUES ('Lybster', 75, 25, 1, 1);
