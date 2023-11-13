@@ -1,0 +1,94 @@
+from db.run_sql import run_sql
+
+from models.team import Team
+
+import repositories.team_repository as team_repository
+import repositories.player_repository as player_repository
+
+
+# create a new transfer
+
+#stopped here because I think save should take an object, not the properties.  there is lready
+# a match object with these teams it should come in here.
+# but this is a copy fo
+
+
+def save(team1_id, team2_id):
+    match = None
+    sql = """
+    INSERT INTO matches (team1_id, team2_id, completed, winner_id) 
+    VALUES (%s,%s,%s,%s)
+    RETURNING id
+    """
+    values = [team1_id, team2_id, "f", None]
+
+    team1 = team_repository.select(team1_id)
+    team2 = team_repository.select(team2_id)
+
+    result = run_sql(sql, values)
+    return Match(team1, team2, False, None, result[0]["id"])
+
+
+
+# view all matches
+def select_all():
+    matches = []
+
+    sql = "SELECT * FROM matches"
+    results = run_sql(sql)
+
+    for result in results:
+        team1 = team_repository.select(result["team1_id"])
+        team2 = team_repository.select(result["team2_id"])
+        winner = team_repository.select(result["winner_id"])
+        match = Match(team1, team2, result["completed"], winner, result["id"])
+
+        matches.append(match)
+    return matches
+
+
+# view matches by team id
+#  TODO - this not returning anything - WHY?
+def select_by_team(id):
+    matches = []
+    sql = "SELECT * FROM matches WHERE team1_id = %s OR team2_id = %s"
+    values = [id, id]
+    results = run_sql(sql, values)
+
+    for result in results:
+        team1 = team_repository.select(result["team1_id"])
+        team2 = team_repository.select(result["team2_id"])
+        winner = team_repository.select(result["winner_id"])
+        match = Match(team1, team2, result["completed"], winner, id=result["id"])
+        matches.append(match)
+    return matches
+
+
+# view an individual match
+def select(id):
+    match = None
+    sql = "SELECT * FROM matches WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        team1 = team_repository.select(result["team1_id"])
+        team2 = team_repository.select(result["team2_id"])
+        winner = team_repository.select(result["winner_id"])
+        match = Match(team1, team2, result["completed"], winner, id=id)
+    return match
+
+
+# update a match after the result is known
+def update(match):
+    sql = """UPDATE matches SET (completed, winner_id) = ('t', %s)
+    WHERE id = %s"""
+    values = [match.winner.id, match.id]
+    run_sql(sql, values)
+
+
+# delete all matches
+def delete_all():
+    sql = "DELETE FROM matches"
+    run_sql(sql)

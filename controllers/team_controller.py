@@ -45,7 +45,9 @@ def add_team():
 def team_by_id(id):
     team = team_repository.select(id)
     players = player_repository.select_all_by_team_id(id)
+
     print("teams players here --> ", players)
+    
     return render_template("/teams/team.html", team=team, players=players)
 
 # show edit team form

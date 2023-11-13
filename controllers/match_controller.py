@@ -30,19 +30,10 @@ def save_match():
 @matches_blueprint.route("/matches/play", methods=["POST"])
 def play():
     match_id = request.form["match-id"]
-
     match = match_repository.select(int(match_id))
-    # print("BEFORE", match.winner.id)
     match.play()
-    print("AFTER", match.id)
 
     match_repository.update(match)
     team_repository.update_stats(match.team1)
     team_repository.update_stats(match.team2)
     return render_template("/matches/match.html", match=match)
-
-
-# get the match from the id
-# call methods on the match to determine the winner
-# update team objects
-# return the match view with additional info, a link to the league etc
