@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="/transfers/new" method="POST" class="input-form">
+    <fieldset>
+        <legend>Propose a transfer:</legend>
+        <label for="player">Player</label>
+        <select name="player" id="player">
+            {% for player in players %}
+            <option value="{{player.id}}">{{player.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team_to">Move to</label>
+        <select name="team_to" id="team_to">
+            {% for team in teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="transfer_fee"></label>
+        <input type="number" name="transfer_fee" id="transfer_fee">
+
+        <button type="submit">Propose Transfer</button>
+    </fieldset>
+
+</form>
+
+{% endblock %}

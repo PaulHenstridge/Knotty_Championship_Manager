@@ -66,8 +66,6 @@ def delete(id):
 
 
 # edit/update a team
-
-
 def update(team):
     sql = """
     UPDATE teams SET (name, attack, defence, matches_played, wins) = (%s,%s,%s,%s, %s)

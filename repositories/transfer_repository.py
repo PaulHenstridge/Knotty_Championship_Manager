@@ -13,7 +13,7 @@ def save(transfer): # player, team_from, team_to, transfer_fee
     team_from_id = transfer.team_from.id
     team_to_id = transfer.team_to.id
     transfer_fee = transfer.transfer_fee
-    status = transfer.status
+    status = transfer.status.name
 
     sql = """
     INSERT INTO transfers (player_id, team_from_id, team_to_id, transfer_fee, status) 
@@ -21,10 +21,12 @@ def save(transfer): # player, team_from, team_to, transfer_fee
     RETURNING id
     """
     values = [player_id, team_from_id, team_to_id, transfer_fee, status]
+    print(values)
 
     result = run_sql(sql, values)
-    transfer.id = result[0]["id"]
-    return transfer
+    print(result)
+    # transfer.id = result[0]["id"]
+    # return transfer
 
 
 # view all transfers
@@ -91,11 +93,18 @@ def select(id):
     return transfer
 
 
-# update a transfer after the decision is known
+# update a transfer 
 def update(transfer):
-    sql = """UPDATE transfers SET (status) = (%s)
+    sql = """UPDATE transfers SET (player_id, team_from_id, team_to_id, transfer_fee, status) = (%s,%s,%s,%s,%s)
     WHERE id = %s"""
-    values = [transfer.status, transfer.id]
+    values = [
+        transfer.player.id,
+        transfer.team_from.id,
+        transfer.team_to.id,
+        transfer.transfer_fee,
+        transfer.status,
+        transfer.id
+        ]
     run_sql(sql, values)
 
 
