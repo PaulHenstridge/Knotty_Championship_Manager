@@ -1,94 +1,105 @@
 from db.run_sql import run_sql
 
 from models.team import Team
+from models.transfer import Transfer
 
 import repositories.team_repository as team_repository
 import repositories.player_repository as player_repository
 
 
 # create a new transfer
+def save(transfer): # player, team_from, team_to, transfer_fee
+    player_id = transfer.player.id
+    team_from_id = transfer.team_from.id
+    team_to_id = transfer.team_to.id
+    transfer_fee = transfer.transfer_fee
+    status = "PENDING"
 
-#stopped here because I think save should take an object, not the properties.  there is lready
-# a match object with these teams it should come in here.
-# but this is a copy fo
-
-
-def save(team1_id, team2_id):
-    match = None
     sql = """
-    INSERT INTO matches (team1_id, team2_id, completed, winner_id) 
-    VALUES (%s,%s,%s,%s)
+    INSERT INTO transfers (player_id, team_from_id, team_to_id, transfer_fee, status) 
+    VALUES (%s,%s,%s,%s,%s)
     RETURNING id
     """
-    values = [team1_id, team2_id, "f", None]
-
-    team1 = team_repository.select(team1_id)
-    team2 = team_repository.select(team2_id)
+    values = [player_id, team_from_id, team_to_id, transfer_fee, status]
 
     result = run_sql(sql, values)
-    return Match(team1, team2, False, None, result[0]["id"])
+    transfer.id = result[0]["id"]
+    return transfer
 
 
-
-# view all matches
+# view all transfers
 def select_all():
-    matches = []
+    transfers = []
 
-    sql = "SELECT * FROM matches"
+    sql = "SELECT * FROM transfers"
     results = run_sql(sql)
 
     for result in results:
-        team1 = team_repository.select(result["team1_id"])
-        team2 = team_repository.select(result["team2_id"])
-        winner = team_repository.select(result["winner_id"])
-        match = Match(team1, team2, result["completed"], winner, result["id"])
+        player_id = player_repository.select(result["player_id"])
+        team_from_id = team_repository.select(result["team_from_id"])
+        team_to_id = team_repository.select(result["team_to_id"])
+        transfer_fee = result["transfer_fee"]
+        status = result["status"]
+        id = result["id"]
 
-        matches.append(match)
-    return matches
+        transfer = Transfer(player_id, team_from_id, team_to_id, transfer_fee, status, id)
+        transfers.append(transfer)
+
+    return transfers
 
 
-# view matches by team id
-#  TODO - this not returning anything - WHY?
+# view transfers by team id
 def select_by_team(id):
-    matches = []
-    sql = "SELECT * FROM matches WHERE team1_id = %s OR team2_id = %s"
+    transfers = []
+    sql = "SELECT * FROM transfers WHERE team_from_id = %s OR team_to_id = %s"
     values = [id, id]
     results = run_sql(sql, values)
 
     for result in results:
-        team1 = team_repository.select(result["team1_id"])
-        team2 = team_repository.select(result["team2_id"])
-        winner = team_repository.select(result["winner_id"])
-        match = Match(team1, team2, result["completed"], winner, id=result["id"])
-        matches.append(match)
-    return matches
+        player_id = player_repository.select(result["player_id"])
+        team_from_id = team_repository.select(result["team_from_id"])
+        team_to_id = team_repository.select(result["team_to_id"])
+        transfer_fee = result["transfer_fee"]
+        status = result["status"]
+        id = result["id"]
+        
+        transfer = Transfer(player_id, team_from_id, team_to_id, transfer_fee, status, id)
+        transfers.append(transfer)
+
+    return transfers
 
 
-# view an individual match
+
+# view an individual transfer
 def select(id):
-    match = None
-    sql = "SELECT * FROM matches WHERE id = %s"
+    sql = "SELECT * FROM transfers WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)
 
     if results:
         result = results[0]
-        team1 = team_repository.select(result["team1_id"])
-        team2 = team_repository.select(result["team2_id"])
-        winner = team_repository.select(result["winner_id"])
-        match = Match(team1, team2, result["completed"], winner, id=id)
-    return match
+
+        player_id = player_repository.select(result["player_id"])
+        team_from_id = team_repository.select(result["team_from_id"])
+        team_to_id = team_repository.select(result["team_to_id"])
+        transfer_fee = result["transfer_fee"]
+        status = result["status"]
+        id = result["id"]
+        
+        transfer = Transfer(player_id, team_from_id, team_to_id, transfer_fee, status, id)
+
+    return transfer
 
 
-# update a match after the result is known
-def update(match):
-    sql = """UPDATE matches SET (completed, winner_id) = ('t', %s)
+# update a transfer after the decision is known
+def update(transfer):
+    sql = """UPDATE transfers SET (status) = (%s)
     WHERE id = %s"""
-    values = [match.winner.id, match.id]
+    values = [transfer.status, transfer.id]
     run_sql(sql, values)
 
 
-# delete all matches
+# delete all transfers
 def delete_all():
-    sql = "DELETE FROM matches"
+    sql = "DELETE FROM transfers"
     run_sql(sql)

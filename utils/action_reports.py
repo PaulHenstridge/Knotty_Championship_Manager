@@ -53,7 +53,7 @@ miss_reports = [
     "Solid defence from {other_team_name} to clear the danger",
     "{other_team_name} slice down the {team_name} attacker with a brutal chop to the legs",
     "Surely a goal for {team_name}... its WIDE!  how did he miss that?",
-    "{team_name} dominate in midfield. Their striker is free... Ouch, smashed to the ground by the {othrt_team_name} enforcer!"
+    "{team_name} dominate in midfield. Their striker is free... Ouch, smashed to the ground by the {other_team_name} enforcer!"
     "{other_team_name} are sitting back, absorbing the pressure.",
 
     "{team_name} fires a cannonball, but it's just over the bar! The fans hold their heads in disbelief.",

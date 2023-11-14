@@ -5,7 +5,7 @@ from models.match import Match
 
 import repositories.team_repository as team_repository
 
-
+# TODO - refactor save() to accept a match object - see trnsfer repo
 # create a new match
 def save(team1_id, team2_id):
     match = None
