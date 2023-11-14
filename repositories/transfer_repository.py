@@ -13,7 +13,7 @@ def save(transfer): # player, team_from, team_to, transfer_fee
     team_from_id = transfer.team_from.id
     team_to_id = transfer.team_to.id
     transfer_fee = transfer.transfer_fee
-    status = "PENDING"
+    status = transfer.status
 
     sql = """
     INSERT INTO transfers (player_id, team_from_id, team_to_id, transfer_fee, status) 
