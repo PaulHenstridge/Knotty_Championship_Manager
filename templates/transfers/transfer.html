@@ -1,1 +1,28 @@
-{{trnasfer}}
+{% extends 'base.html' %}
+{% block content %}
+<div class="match-container">
+    <h1>{{transfer.status}}</h1>
+    {% if transfer.status == "_TransferStatus.ACCEPTED" or transfer.status == "_TransferStatus.DECLINED"%}
+
+         <h2>Transfer of{{transfer.player}} from {{transfer.team_from.name}} to {{transfer.team_to.name}} has been completed for a fee of £{{transfer.transfer_fee}}</h2>>
+    {% else %}
+
+        <h2>Proposed transfer of: {{transfer.player.name}}<br>
+            Valued at: £{{transfer.player.value}}
+            From: {{transfer.team_from.name}}<br> 
+            To: {{transfer.team_to.name}}<br> 
+            Proposed fee: £{{transfer.transfer_fee}}
+        </h2>
+        <div class ="transfer-buttons">
+            <a href="/transfer/{{transfer.id}}/accept">Accept</a>
+            <a href="/transfer/{{transfer.id}}/decline">Decline</a>
+            <a href="/transfer/{{transfer.id}}/negotiate">Negotiate</a>
+        </div>
+    {% endif %}
+</div>
+<a class="return-link" href="/matches">return to matches</a>
+
+
+
+
+{% endblock %}

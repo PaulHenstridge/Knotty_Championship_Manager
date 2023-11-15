@@ -28,6 +28,7 @@ def select_all():
             result["defence"],
             result["matches_played"],
             result["wins"],
+            result["bank_balance"],
             result["id"],
         )
         teams.append(team)
@@ -68,7 +69,7 @@ def delete(id):
 # edit/update a team
 def update(team):
     sql = """
-    UPDATE teams SET (name, attack, defence, matches_played, wins) = (%s,%s,%s,%s, %s)
+    UPDATE teams SET (name, attack, defence, matches_played, wins, bank_balance) = (%s,%s,%s,%s,%s, %s)
     WHERE id = %s
     """
     values = [
@@ -77,6 +78,7 @@ def update(team):
         team.defence,
         team.matches_played,
         team.wins,
+        team.bank_balance,
         team.id,
     ]
     run_sql(sql, values)

@@ -36,25 +36,39 @@ def save_transfer():
     transfer = transfer_repository.save(new_transfer)
     return render_template("/transfers/transfer.html", transfer=transfer)
 
-# TODO -  think I need an update route to update status of the transfer.
-    # will be called when a transfer is clicked accepted / decliner
-    #  or  when re-negotiating - update fee, change status to "NEGOTIATING" ( update enum)
-    # or   in the edit route?  not really realistic to edit details of an offer so prob not
-
-    # interaction calls controller -> uses id to get details from DB, instantiates a Transfer instance
-    # calls method on class instance... eg accept, decline, negotiate
-    # methods update the instances values.  
-    # instance passed to the repository.update() method to be added to DB
-    # and passed to a template to show the new status of the transfer.
-
-    # so what routes?  do all in update, or have transfers/accept ,transfers/decline etc?
+# TODO - 
 
     def update_transfer(transfer):
+        # an admin route?
         pass
 
-    # UPDATE: player team and team_id, both temas bank_balance, transfer_status
-    # not here though - seperate method i think.   this is for creatig new.
-    # above would happen on accept or decline - update route!
+
+@transfers_blueprint.route("/transfer/<id>/accept")
+def accept_transfer(id):
+    print("Accepted!")
+    transfer = transfer_repository.select(id)
+    print('transfer in accept :', transfer.player.team_id)
+    transfer.confirm()
+    print('transfer in accept after confirm():', transfer.player.team_id)
+
+    transfer_repository.update(transfer)
+    player_repository.update(transfer.player)
+    team_repository.update(transfer.team_from)
+    team_repository.update(transfer.team_to)
+
+    return render_template("/transfers/transfer.html", transfer=transfer)
+
+
+@transfers_blueprint.route("/transfer/<id>/negotiate")
+def negotiate_transfer(id):
+    #update fee and status
+    pass
+@transfers_blueprint.route("/transfer/<id>/decline")
+def decline_transfer(id):
+    # update status
+    pass
+
+
 
 # @transfers_blueprint.route("/transfers/play", methods=["POST"])
 # def play():

@@ -25,8 +25,8 @@ def save(transfer): # player, team_from, team_to, transfer_fee
 
     result = run_sql(sql, values)
     print(result)
-    # transfer.id = result[0]["id"]
-    # return transfer
+    transfer.id = result[0]["id"]
+    return transfer
 
 
 # view all transfers
@@ -102,7 +102,7 @@ def update(transfer):
         transfer.team_from.id,
         transfer.team_to.id,
         transfer.transfer_fee,
-        transfer.status,
+        transfer.status.name,
         transfer.id
         ]
     run_sql(sql, values)

@@ -3,14 +3,14 @@ import random
 from utils.generate_player import generate_player
 
 class Team:
-    def __init__(self, name, attack, defence, matches_played, wins, id=None):
+    def __init__(self, name, attack, defence, matches_played, wins, bank_balance=5000, id=None):
         self.name = name
         self.attack = attack
         self.defence = defence
         self.matches_played = matches_played
         self.wins = wins
         self.id = id
-        self.bank_balance = 10_000
+        self.bank_balance = bank_balance
 
     #  increment matches played
     def update(self, result):

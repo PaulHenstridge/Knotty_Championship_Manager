@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS transfers;
 DROP TABLE IF EXISTS players;
 DROP TABLE IF EXISTS matches;
 DROP TABLE IF EXISTS teams;
@@ -8,7 +9,8 @@ CREATE TABLE teams (
     attack INT,
     defence INT,
     matches_played INT,
-    wins INT
+    wins INT,
+    bank_balance INT
 );
 
 CREATE TABLE matches (
@@ -38,14 +40,14 @@ CREATE TABLE transfers (
 
 
 
-INSERT INTO teams (name, attack, defence, matches_played, wins) 
-VALUES ('Lybster', 75, 25, 1, 1);
+INSERT INTO teams (name, attack, defence, matches_played, wins, bank_balance) 
+VALUES ('Lybster', 75, 25, 1, 1, 5000);
 
-INSERT INTO teams (name, attack, defence, matches_played, wins) 
-VALUES ('Dunbeath', 55, 85, 1, 0);
+INSERT INTO teams (name, attack, defence, matches_played, wins, bank_balance) 
+VALUES ('Dunbeath', 55, 85, 1, 0, 5000);
 
-INSERT INTO teams (name, attack, defence, matches_played, wins) 
-VALUES ('Kiess', 45, 55, 0, 0);
+INSERT INTO teams (name, attack, defence, matches_played, wins, bank_balance) 
+VALUES ('Kiess', 45, 55, 0, 0, 5000);
 
 INSERT INTO matches (team1_id, team2_id, completed, winner_id)
 VALUES (1,2,'t',1);

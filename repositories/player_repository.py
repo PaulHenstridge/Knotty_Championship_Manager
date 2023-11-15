@@ -96,9 +96,7 @@ def delete(id):
     run_sql(sql, values)
 
 
-# edit/update a playe
-
-
+# edit/update a player
 def update(player):
     sql = """
     UPDATE players SET (name, position, skill_level, team_id) = (%s,%s,%s,%s)
@@ -109,6 +107,7 @@ def update(player):
         player.position,
         player.skill_level,
         player.team_id,
+        player.id
        
     ]
     run_sql(sql, values)
