@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="match-container">
-    <h1>{{transfer.status}}</h1>
+    <h1>{{transfer.team_to.name}}</h1>
     {% if transfer.status == "_TransferStatus.ACCEPTED" or transfer.status == "_TransferStatus.DECLINED"%}
 
          <h2>Transfer of{{transfer.player}} from {{transfer.team_from.name}} to {{transfer.team_to.name}} has been completed for a fee of £{{transfer.transfer_fee}}</h2>>

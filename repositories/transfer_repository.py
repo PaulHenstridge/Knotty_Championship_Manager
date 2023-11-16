@@ -9,6 +9,8 @@ import repositories.player_repository as player_repository
 
 # create a new transfer
 def save(transfer): # player, team_from, team_to, transfer_fee
+    print("&&&&& transfer being saved", transfer.team_from.id)
+
     player_id = transfer.player.id
     team_from_id = transfer.team_from.id
     team_to_id = transfer.team_to.id
@@ -26,6 +28,7 @@ def save(transfer): # player, team_from, team_to, transfer_fee
     result = run_sql(sql, values)
     print(result)
     transfer.id = result[0]["id"]
+    print("transfer in trans repo :", transfer.__dict__)
     return transfer
 
 
@@ -81,14 +84,14 @@ def select(id):
     if results:
         result = results[0]
 
-        player_id = player_repository.select(result["player_id"])
-        team_from_id = team_repository.select(result["team_from_id"])
-        team_to_id = team_repository.select(result["team_to_id"])
+        player = player_repository.select(result["player_id"])
+        team_from = team_repository.select(result["team_from_id"])
+        team_to = team_repository.select(result["team_to_id"])
         transfer_fee = result["transfer_fee"]
         status = result["status"]
         id = result["id"]
         
-        transfer = Transfer(player_id, team_from_id, team_to_id, transfer_fee, status, id)
+        transfer = Transfer(player, team_from, team_to, transfer_fee, status, id)
 
     return transfer
 
@@ -105,7 +108,8 @@ def update(transfer):
         transfer.status.name,
         transfer.id
         ]
-    run_sql(sql, values)
+    result = run_sql(sql, values)
+    return transfer
 
 
 # delete all transfers
