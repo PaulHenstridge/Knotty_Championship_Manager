@@ -15,7 +15,7 @@ def generate_name():
         print(f"Last Name: {last_name}")
         print(f"Thumbnail URL: {thumbnail_url}")
 
-        return f"{first_name} {last_name}"
+        return f"{first_name} {last_name}", thumbnail_url
     else:
         print("Failed to fetch data:", response.status_code)
         return {"Bobby NoNames"}

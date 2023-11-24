@@ -6,18 +6,20 @@
     <div class="col-header">Position</div>
     <div class="col-header">Skill</div>
     <div class="col-header">Team</div>
+    <div class="col-header">Value</div>
 
 </div>
 {% for player in players %}
 
-<div class="team-grid-container">
-    <h3>{{player.name}}</h3>
+<a href="/players/{{player.id}}" class="team-grid-container">
+   <div class="img-name"><img src="{{player.img_url}}" alt="player image"> <strong><h3>{{player.name}}</h3> </strong></div> 
     <h4> {{player.position}}</h4>
     <h4>{{player.skill_level}}</h4>
     <h4> {{player.team_name}}</h4>
+    <h4> £{{player.value}}</h4>
     
-    <a href="/players/{{player.id}}"> <i class="fa fa-info-circle" aria-hidden="true"></i></a>
-</div>
+    <!-- <a href="/players/{{player.id}}"> <i class="fa fa-info-circle" aria-hidden="true"></i></a> -->
+</a>
 
 
 

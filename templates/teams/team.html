@@ -11,13 +11,23 @@
     </div>
 
     <section class="players-display">
+        <div class="team-grid-container tbl-header">
+            <div class="col-header"></div>
+            <div class="col-header">Position</div>
+            <div class="col-header"></div>
+            <div class="col-header">Skill</div>
+            <div class="col-header"></div>
+            
+            <div class="col-header">Value</div>
+
+        </div>
         {% for player in players%}
-            <div class="player-grid-container">
-                <span>{{player.name}}</span>
+            <a href="/players/{{player.id}}" class="player-grid-container">
+                <div class="img-name"><img src="{{player.img_url}}" alt="player image"> <strong><h3>{{player.name}}</h3> </strong></div> 
                 <span>{{player.position}}</span>
                 <span>{{player.skill_level}}</span>
-                <button>toggle selected</button>
-            </div>
+                <span>£{{player.value}}</span>
+            </a>
         {% endfor %}
     </section>
 

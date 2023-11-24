@@ -6,6 +6,7 @@ import repositories.match_repository as match_repository
 import repositories.player_repository as player_repository
 
 from models.player import Player
+from utils.generate_name import generate_name
 
 players_blueprint = Blueprint("players", __name__)
 
@@ -38,7 +39,8 @@ def add_player():
         team_name = team_info[1]
 
         # create new player obj
-        player = Player(name, position, skill_level, team_name, team_id)
+        _,img_url = generate_name()
+        player = Player(name, position, skill_level, team_name, team_id, img_url)
         print("player to be added: ",player)
         player_repository.save(player)
         return render_template("/players/player.html", player=player)

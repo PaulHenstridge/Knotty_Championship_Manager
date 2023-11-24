@@ -51,28 +51,29 @@ def save_transfer():
 def accept_transfer(id):
     print("Accepted!")
     transfer = transfer_repository.select(id)
-    print('transfer before confirm():', transfer.__dict__)
-    print('team to before confirm():', transfer.team_to.name)
-
     transfer.confirm()
-    print('transfer being passed to update:', transfer.__dict__)
-
-    transfer_with_id = transfer_repository.update(transfer)
+    transfer_repository.update(transfer)
     player_repository.update(transfer.player)
     team_repository.update(transfer.team_from)
     team_repository.update(transfer.team_to)
 
-    return render_template("/transfers/transfer.html", transfer=transfer_with_id)
+    return render_template("/transfers/transfer.html", transfer=transfer)
 
 
 @transfers_blueprint.route("/transfer/<id>/negotiate")
 def negotiate_transfer(id):
-    #update fee and status
-    pass
+    transfer = transfer_repository.select(id)
+    transfer.nogotiate()
+    transfer_repository.update(transfer)
+    return render_template("/transfers/transfer.html", transfer=transfer)
+
 @transfers_blueprint.route("/transfer/<id>/decline")
 def decline_transfer(id):
-    # update status
-    pass
+    transfer = transfer_repository.select(id)
+    transfer.decline()
+    transfer_repository.update(transfer)
+    return render_template("/transfers/transfer.html", transfer=transfer)
+
 
 
 
