@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="team-grid-container tbl-header">
+    <div class="col-header"></div>
+    <div class="col-header">Position</div>
+    <div class="col-header">Skill</div>
+    <div class="col-header">Value</div>
+    <div class="col-header">From</div>
+    <div class="col-header">To</div>
+    <div class="col-header">Fee</div>
+    <div class="col-header">Status</div>
+
+</div>
+{% for transfer in transfers %}
+
+<a href="/transfer/{{transfer.id}}" class="team-grid-container">
+   <div class="img-name"><img src="{{transfer.player.img_url}}" alt="player image"> <strong><h3>{{player.name}}</h3> </strong></div> 
+    <h4> {{transfer.player.position}}</h4>
+    <h4>{{transfer.player.skill_level}}</h4>
+    <h4> £{{transfer.player.value}}</h4>
+    <h4> {{transfer.team_from}}</h4>
+    <h4> {{transfer.team_to}}</h4>
+    <h4> {{transfer.transfer_fee}}</h4>
+    <h4> {{transfer.status}}</h4>
+    
+</a>
+
+{% endfor %}
+{% endblock %}
