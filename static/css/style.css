@@ -147,7 +147,7 @@ button {
 }
 
 
-.team-grid-container {
+.team-grid-container, .transfer-grid-container {
     font-family: var(--ff-title);
     display: grid;
     grid-template-columns: 6fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr;
@@ -177,7 +177,12 @@ button {
     font-family: var(--ff-title);
 }
 
-a.team-grid-container, a.player-grid-container{
+.transfer-grid-container{
+    grid-template-columns: 3fr 1fr 1fr 1fr  1fr 1fr  1fr 1fr;
+
+}
+
+a.team-grid-container, a.player-grid-container, a.transfer-grid-container{
     text-decoration: none;
     color: black;
 }

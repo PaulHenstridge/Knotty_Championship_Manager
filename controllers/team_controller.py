@@ -44,10 +44,7 @@ def add_team():
 @teams_blueprint.route("/teams/<id>")
 def team_by_id(id):
     team = team_repository.select(id)
-    players = player_repository.select_all_by_team_id(id)
-
-    print("teams players here --> ", players)
-    
+    players = player_repository.select_all_by_team_id(id)    
     return render_template("/teams/team.html", team=team, players=players)
 
 # show edit team form

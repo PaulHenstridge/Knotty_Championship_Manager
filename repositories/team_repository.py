@@ -37,7 +37,6 @@ def select_all():
 
 # show an individual team by id
 def select(id):
-    print("the non existent id in teams repo, selct ", id )
     team = None
     sql = """
         SELECT * FROM teams WHERE id = %s
@@ -46,7 +45,6 @@ def select(id):
     results = run_sql(sql, values)
 
     if results:
-        print("fucking results ,,,,,,, ", results)
         result = results[0]
         team = Team(
             result["name"],
@@ -57,8 +55,6 @@ def select(id):
             result["bank_balance"],
             result["id"],
         )
-
-        print("team created in select ---->: ", team.__dict__)
     else:
         print("No results from select in team repo")
     return team

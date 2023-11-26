@@ -46,6 +46,15 @@ def save_transfer():
         # an admin route?
         pass
 
+# show a transfer by id
+@transfers_blueprint.route("/transfers/<id>")
+def transfer_by_id(id):
+    transfer = transfer_repository.select(id)
+
+    return render_template("/transfers/transfer.html", transfer=transfer)
+
+
+
 
 @transfers_blueprint.route("/transfer/<id>/accept")
 def accept_transfer(id):
