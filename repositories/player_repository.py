@@ -47,7 +47,7 @@ def select_all_by_team_id(team_id):
         JOIN teams ON players.team_id = teams.id
         WHERE teams.id = %s
       """
-    values = team_id
+    values = [team_id]
     results = run_sql(sql,values)
     print("results in repository ", results)
     for result in results:

@@ -33,8 +33,8 @@ CREATE TABLE players (
 CREATE TABLE transfers (
     id SERIAL PRIMARY KEY,
     player_id INT REFERENCES players(id),
-    team_from_id INT REFERENCES teams(id),
-    team_to_id INT REFERENCES teams(id),
+    team_from_id INT REFERENCES teams(id) ON DELETE CASCADE,
+    team_to_id INT REFERENCES teams(id)  ON DELETE CASCADE,
     transfer_fee INT,
     status VARCHAR(20)
 );
