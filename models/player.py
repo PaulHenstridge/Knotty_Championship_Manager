@@ -12,8 +12,11 @@ class Player:
         self.value = self.calc_value()
 
     def calc_value(self):
-        multiplier = random.choice(range(8,19))
-        return self.skill_level * multiplier
+        if hasattr(self, 'value'):
+            return self.value
+        else:
+            multiplier = random.choice(range(8,19))
+            return self.skill_level * multiplier
 
 
     def train(self):

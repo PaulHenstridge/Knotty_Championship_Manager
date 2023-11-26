@@ -18,10 +18,10 @@ class Team:
         if result:
             self.wins += 1
 
-    def generate_players(self):
+    def generate_players(self, team_type):
         players = []
         for i in range(10):
-            player = generate_player(self.name, self.id, i)
+            player = generate_player(self.name, self.id, team_type, i)
             players.append(player)
         self.set_skill_levels(players)   
 
