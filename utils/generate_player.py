@@ -10,7 +10,7 @@ def generate_player(team_name, team_id, team_type, index):
         name, img_url = generate_name()
 
     position = "Attack" if index>5 else "Defence"
-    skill_level = random.choice(range(12,100))
+    skill_level = random.choice(range(23,100))
     team_name = team_name
     team_id = team_id
 

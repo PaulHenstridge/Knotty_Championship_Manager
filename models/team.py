@@ -35,5 +35,7 @@ class Team:
             if player.position == "Defence":
                 self.defence += player.skill_level
 
+        self.attack = round(self.attack/4)
+        self.defence = round(self.defence/6)
 
  #  TODO - train players and improve skill ratings
