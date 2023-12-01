@@ -38,4 +38,9 @@ class Team:
         self.attack = round(self.attack/4)
         self.defence = round(self.defence/6)
 
- #  TODO - train players and improve skill ratings
+    def select_scorer(self):
+        # 80-20 towards attackers
+        ### TODO - this requires team to have a list of players, which it should.
+
+        # 
+        # then choose randomly from the group

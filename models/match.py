@@ -57,7 +57,7 @@ class Match:
                 self.match_score[idx] += 1
 # TODO here --> 
             # scorer = attacking_team.selectScorer() 
-                # select a scorer. 80-20 towards attackers,
+                # 80-20 towards attackers,
                 # then choose randomly from the group
 
             # this method returns True, scorer or False, None
@@ -68,7 +68,7 @@ class Match:
             # where play is called in controller, use [goal_scorers] to update DB
            
             # the DB needs to be updated to take goals scored on in players
-            # matches nees updated to take goal_scorers
+            # matches need updated to take goal_scorers
             # both models changed, and all creation of instances updated
 
                 return True
