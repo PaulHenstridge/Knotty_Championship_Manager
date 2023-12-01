@@ -30,9 +30,21 @@ def save_tournament():
     
     teams = []
     for id in team_ids:
-        team = team_repository.select(id)
+        team = team_repository.select(int(id))
         teams.append(team)
+    print("Teams in controler l.35", teams)
+
     tournament = Tournament(teams)
     tournament_repository.save(tournament)    
     
     return render_template("/tournaments/tournament.html", tournament=tournament)
+
+@tournaments_blueprint.route("/tournaments/play", methods=["POST"])
+def play_tournament():
+    tourney_id = request.form["id"]
+    tournament = tournament_repository.select(int(tourney_id))
+    tournament.run_tourney()
+
+    tournament_repository.update(tournament)
+    # some way to add all the games played in the tourney....?
+    return render_template("/tournaments/tournament.html")

@@ -1,1 +1,34 @@
-Tourneeeee!
+{% extends 'base.html' %}
+{% block content %}
+<div class="match-container">
+    <h1> Tournament {{tournament.id}} Competitors</h1>
+    {% for team in tournament.teams%}
+    <h4>{{team.name}}</h4>
+        {% endfor %}
+
+    {% if tournament.completed %}
+    <h4>The winner was {{tournament.winner.name}}</h4>
+
+    <div class="report">
+        <h3>Matches</h3>
+        <!-- {% for item in match.report%}
+        <p>{{ item }}</p>
+        {% endfor %} -->
+    </div>
+
+
+    {% else %}
+
+    <form action="/tournaments/play" method="POST">
+        <!-- passing the match id back tothe server so it can retrieve data from DB -->
+        <input type="number" name="tournament-id" id="tournament-id" value="{{tournament.id}}" class="hidden">
+        <button>Play Tournament</button>
+    </form>
+    {% endif %}
+</div>
+<a class="return-link" href="/">Return to league table</a>
+
+
+
+
+{% endblock %}

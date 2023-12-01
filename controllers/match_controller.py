@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
-import pdb
 
 import repositories.team_repository as team_repository
 import repositories.match_repository as match_repository
@@ -22,7 +21,6 @@ def new_match():
 
 @matches_blueprint.route("/matches/new", methods=["POST"])
 def save_match():
-    print(request.form)
     match = match_repository.save(request.form["team1"], request.form["team2"])
     return render_template("/matches/match.html", match=match)
 

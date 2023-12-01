@@ -43,7 +43,8 @@ CREATE TABLE transfers (
 
 CREATE TABLE tournaments (
     id SERIAL PRIMARY KEY,
-    winner_id INTEGER NULL
+    winner_id INTEGER NULL,
+    completed BOOLEAN
 );
 
 CREATE TABLE tournament_teams (
