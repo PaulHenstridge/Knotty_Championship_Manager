@@ -29,15 +29,12 @@ def new_transfer():
 def save_transfer():
 
     player = player_repository.select(request.form["player"])
-    print("team ids in save in controller ", player.team_id, request.form["team_to"])
     team_from = team_repository.select(player.team_id) 
     team_to = team_repository.select(request.form["team_to"])
-    print("IDs of team from, to at instantiation ", team_from.id, team_to.id)
     transfer_fee = request.form["transfer_fee"]
 
     new_transfer = Transfer(player, team_from, team_to, transfer_fee)
     transfer = transfer_repository.save(new_transfer)
-    print( transfer.team_to.name)
     return render_template("/transfers/transfer.html", transfer=transfer)
 
 # TODO - 

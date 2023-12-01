@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS transfers;
 DROP TABLE IF EXISTS players;
 DROP TABLE IF EXISTS matches;
+DROP TABLE IF EXISTS tournament_teams;
 DROP TABLE IF EXISTS teams;
+DROP TABLE IF EXISTS tournaments;
 
 CREATE TABLE teams (
     id SERIAL PRIMARY KEY,
@@ -41,7 +43,7 @@ CREATE TABLE transfers (
 
 CREATE TABLE tournaments (
     id SERIAL PRIMARY KEY,
-    winner INTEGER NULL
+    winner_id INTEGER NULL
 );
 
 CREATE TABLE tournament_teams (

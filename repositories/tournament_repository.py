@@ -7,7 +7,7 @@ import repositories.team_repository as team_repository
 # create new tournament
 def save(tournament):
     sql = """
-    INSERT INTO tournaments (winner) 
+    INSERT INTO tournaments (winner_id) 
     VALUES (%s)
     RETURNING id
     """
@@ -20,8 +20,8 @@ def save(tournament):
         INSERT INTO tournament_teams (tournament_id, team_id) 
         VALUES (%s, %s)
         """
-    values = [tourney_id, team.id]
-    run_sql(sql, values)
+        values = [tourney_id, team.id]
+        run_sql(sql, values)
 
 # view all tournaments
 
@@ -32,7 +32,11 @@ def save(tournament):
 
 
 # update winner of tournament
-
+def update(tournament):
+    sql = """UPDATE tournaments SET (winner_id) = ( %s)
+    WHERE id = %s"""
+    values = [tournament.winner.id, tournament.id]
+    run_sql(sql, values)
 
 
 # delete all

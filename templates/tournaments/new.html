@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="/tournaments/new" method="POST" class="input-form">
+    <fieldset>
+        <legend>Select teams to play a tournament</legend>
+        <label for="team1">Team1</label>
+        <select name="team1" id="team1">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team2">Team2</label>
+        <select name="team2" id="team2">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team3">Team3</label>
+        <select name="team3" id="team3">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team4">Team4</label>
+        <select name="team4" id="team4">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team5">Team5</label>
+        <select name="team5" id="team5">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team6">Team6</label>
+        <select name="team6" id="team6">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team7">Team7</label>
+        <select name="team7" id="team7">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team8">Team8</label>
+        <select name="team8" id="team8">
+            {% for team in all_teams %}
+            <option value="{{team.id}}">{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Go to tournament</button>
+    </fieldset>
+
+</form>
+
+{% endblock %}

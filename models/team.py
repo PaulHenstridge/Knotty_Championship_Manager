@@ -41,6 +41,5 @@ class Team:
     def select_scorer(self):
         # 80-20 towards attackers
         ### TODO - this requires team to have a list of players, which it should.
-
-        # 
         # then choose randomly from the group
+        pass

@@ -1,8 +1,10 @@
 from models.match import Match
 
 class Tournament:
-    def __init__(self, teams):
+    def __init__(self, teams, winner=None, id=None):
         self.teams = teams
+        self.winner = winner
+        self.id = id
 
 
     def run_tourney(self, teams):
