@@ -12,6 +12,7 @@ class Team:
         self.cup_wins = cup_wins
         self.id = id
         self.bank_balance = bank_balance
+        self.players = []
 
     #  increment matches played
     def update(self, result):
@@ -20,17 +21,17 @@ class Team:
             self.wins += 1
 
     def generate_players(self, team_type):
-        players = []
+        
         for i in range(10):
             player = generate_player(self.name, self.id, team_type, i)
-            players.append(player)
-        self.set_skill_levels(players)   
+            self.players.append(player)
+        self.set_skill_levels()   
 
-        return players
+        return self.players
 
 
-    def set_skill_levels(self, players):
-        for player in players:
+    def set_skill_levels(self):
+        for player in self.players:
             if player.position == "Attack":
                 self.attack += player.skill_level
             if player.position == "Defence":
@@ -40,7 +41,13 @@ class Team:
         self.defence = round(self.defence/6)
 
     def select_scorer(self):
-        # 80-20 towards attackers
-        ### TODO - this requires team to have a list of players, which it should.
-        # then choose randomly from the group
-        pass
+        print("self.players when select scorer is called: ", self.players)
+        defenders = [player for player in self.players if player.position == "Defender"]
+        attackers = [player for player in self.players if player.position == "Attacker"]
+
+        if random.choice(range(100)) < 70:
+            scorer = random.choice(attackers)
+        else:
+            scorer = random.choice(defenders)
+
+        return scorer

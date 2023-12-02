@@ -29,6 +29,7 @@ CREATE TABLE players (
     name VARCHAR(255),
     position VARCHAR(50),
     skill_level INT,
+    goals INT,
     team_id INT NOT NULL REFERENCES teams(id) ON DELETE CASCADE,
     img_url VARCHAR(255)
 );
@@ -68,17 +69,32 @@ VALUES ('Dunbeath', 55, 85, 1, 0, 0, 5000);
 INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
 VALUES ('Kiess', 45, 55, 0, 0, 5, 5000);
 
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Helmsdale', 65, 25, 1, 1, 0, 5000);
+
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Mexico City', 35, 55, 1, 0, 0, 5000);
+
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Havana Horlicks Boys', 75, 35, 0, 0, 5, 5000);
+
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Orkney', 55, 85, 1, 0, 0, 5000);
+
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Chaing Mai', 40, 50, 0, 0, 5, 5000);
+
 INSERT INTO matches (team1_id, team2_id, completed, winner_id)
 VALUES (1,2,'t',1);
 
-INSERT INTO players (name, position, skill_level, team_id, img_url) 
-VALUES ('John Doe', 'Attacker', 80, 1, Null);
+INSERT INTO players (name, position, skill_level, goals, team_id, img_url) 
+VALUES ('John Doe', 'Attacker', 80, 0, 1, Null);
 
-INSERT INTO players (name, position, skill_level, team_id, img_url) 
-VALUES ('Jack Doe', 'Defender', 60, 1, Null);
+INSERT INTO players (name, position, skill_level, goals, team_id, img_url) 
+VALUES ('Jack Doe', 'Defender', 60, 0, 1, Null);
 
-INSERT INTO players (name, position, skill_level, team_id, img_url) 
-VALUES ('Jim Doe', 'Attacker', 50, 2, Null);
+INSERT INTO players (name, position, skill_level, goals, team_id, img_url) 
+VALUES ('Jim Doe', 'Attacker', 50, 0, 2, Null);
 
-INSERT INTO players (name, position, skill_level, team_id, img_url) 
-VALUES ('George Doe', 'Defender', 70, 2, Null);
+INSERT INTO players (name, position, skill_level, goals, team_id, img_url) 
+VALUES ('George Doe', 'Defender', 70, 0, 2, Null);

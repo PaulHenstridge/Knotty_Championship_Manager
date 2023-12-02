@@ -29,9 +29,9 @@ class Match:
                 idx = idx ^ 1 
             opportunities[idx] -=1
 
-            is_goal = self.attempt_on_goal(teams[idx], teams[idx^1], idx)
+            is_goal, goal_scorer = self.attempt_on_goal(teams[idx], teams[idx^1], idx)
 
-            self.generate_report(teams[idx], teams[idx^1], is_goal)
+            self.generate_report(teams[idx], teams[idx^1], is_goal, goal_scorer)
 
         self.handle_draw()
 
@@ -56,7 +56,7 @@ class Match:
             if shot < chance_of_scoring:
                 self.match_score[idx] += 1
 # TODO here --> 
-            # scorer = attacking_team.selectScorer() 
+                scorer = attacking_team.select_scorer() 
                 # 80-20 towards attackers,
                 # then choose randomly from the group
 
@@ -71,16 +71,17 @@ class Match:
             # matches need updated to take goal_scorers
             # both models changed, and all creation of instances updated
 
-                return True
+                return True, scorer
             else:
-                return False
+                return False, None
             
-    def generate_report(self, team, other_team, is_goal):
+    def generate_report(self, team, other_team, is_goal, goal_scorer):
         if is_goal:
             message = random.choice(score_reports).format(
                 team_name=team.name,
                 other_team_name=other_team.name,
                 score=self.match_score,
+                scorer=goal_scorer.name
             )
         else:
             message = random.choice(miss_reports).format(
