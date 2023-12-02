@@ -1,4 +1,7 @@
+import random
+
 from models.match import Match
+
 
 class Tournament:
     def __init__(self, teams, winner=None, completed=False, id=None):
@@ -10,7 +13,7 @@ class Tournament:
 
     def run_tourney(self, teams):
         if len(teams) > 1:
-            teams.shuffle()
+            random.shuffle(teams)
             matches = []
             for i in range(0, len(teams), 2):
                 match = Match(teams[i], teams[i+1], False)
@@ -22,7 +25,9 @@ class Tournament:
 
             return self.run_tourney(new_teams)
         else:
-            return teams[0]
+            self.winner = teams[0]
+            self.completed = True
+            return self.winner
         
         
 

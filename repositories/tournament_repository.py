@@ -16,14 +16,8 @@ def save(tournament):
     result = run_sql(sql, values)
     print("REEESUlT-->", result)
     tourney_id = result[0]["id"]
-    print("Toornamint 19 repo", dir(tournament))
-
-    print("Tournament object:", tournament)
-    print("Tournament teams property:", tournament.teams)
-    print("Type of tournament.teams:", type(tournament.teams))
 
     teams = tournament.teams
-    print("TTEEAAMMSSSS", teams)
     if teams:
         for team in teams:
             sql = """
@@ -32,6 +26,10 @@ def save(tournament):
             """
             values = [tourney_id, team.id]
             run_sql(sql, values)
+    
+        # TODO = return a tournament so i can pass that, with id, to the template
+        tournament = Tournament(teams, id=tourney_id)
+        return tournament
     else:
         print("No teams found in tournament object passed to save()")
 # view all tournaments
@@ -40,6 +38,7 @@ def save(tournament):
 
 # select a tournament by id
 def select(id):
+    print("SELECT CALLED!")
     tournament = None
     sql = "SELECT * FROM tournaments WHERE id = %s"
     values = [id]
@@ -47,17 +46,20 @@ def select(id):
 
     if results:
         result = results[0]
+        print("Result in repo select 49", result)
         sql = "SELECT * FROM tournament_teams WHERE tournament_id = %s"
         values = [result["id"]]
-        team_ids = run_sql(sql, values)
+        ids = run_sql(sql, values)
         teams = []
-        for id in team_ids:
-            team = team_repository.select(id)
+        for id_pair in ids:
+            team = team_repository.select(id_pair[1])
             teams.append(team)
-        winner = result["winner"]
+        # if theres a value for winner id, use it to get team, else leave it as None
+        winner = None if not result["winner_id"] else team_repository.select(id)
         completed = result["completed"]
         
-        tournament = Tournament(teams, winner, completed, id)
+        tournament = Tournament(teams, winner, completed, id_pair[0])
+        print("tournament form tournament repo select", tournament)
         return tournament
 
 # update winner of tournament

@@ -85,7 +85,7 @@ miss_reports = [
     "{other_team_name} is playing with fire in their own half, but miraculously they fend off {team_name}'s attack. A powerful strike is deflected just wide of the post - the crowd gasps!",
     "{other_team_name}'s last-ditch effort sees their defender sliding in to thwart {team_name}'s attack. The ball ricochets off the post - so close yet so far for {team_name}!",
     "{other_team_name}'s goalie is on top form, diving to save a certain goal from {team_name}. The rebound falls to a forward, but his shot is rushed and off target!",
-    "As {team_name} surges forward, {other_team_name} pulls off a stunning defensive play. A goal seemed inevitable, but a heroic block keeps it {score}!",
+    "As {team_name} surges forward, {other_team_name} pulls off a stunning defensive play. A goal seemed inevitable, but a heroic block keeps it out!",
     "{other_team_name} bends but doesn't break under {team_name}'s relentless pressure. An audacious attempt from distance, but it whistles past the post - no goal!",
     "With {other_team_name} scrambling, {team_name} sees an opening. A thunderous strike looks promising, but it clatters off the crossbar - a heart-stopping moment but no goal!"
 
