@@ -9,17 +9,23 @@ class Tournament:
         self.winner = winner
         self.completed = completed
         self.id = id
+        
+        self.matches = []
 
 
     def run_tourney(self, teams):
+        print("IN RUN TOURNY", len(teams), teams)
+        for team in teams:
+            print(team.name)
         if len(teams) > 1:
             random.shuffle(teams)
-            matches = []
+            this_round = []
             for i in range(0, len(teams), 2):
                 match = Match(teams[i], teams[i+1], False)
-                matches.append(match)
+                this_round.append(match)
+                self.matches.append(match)
             new_teams = []
-            for match in matches:
+            for match in this_round:
                 match.play()
                 new_teams.append(match.winner)
 

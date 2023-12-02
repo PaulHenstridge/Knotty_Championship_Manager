@@ -3,7 +3,7 @@
 <div class="match-container">
     <h1> Tournament {{tournament.id}} Competitors</h1>
     {% for team in tournament.teams%}
-    <h4>{{team.name}}</h4>
+    <p>{{team.name}}</p>
         {% endfor %}
 
     {% if tournament.completed %}
@@ -11,9 +11,27 @@
 
     <div class="report">
         <h3>Matches</h3>
-        <!-- {% for item in match.report%}
-        <p>{{ item }}</p>
-        {% endfor %} -->
+        {% for match in tournament.matches%}
+        {% set match_index = loop.index0 %}
+        {% if match_index == 4 %}
+        <h6> ---- ---- ---- ----</h6>
+        {% endif %}
+        {% if match_index == 7 %}
+        <h6> ---- ---- ---- ----</h6>
+        {% endif %}
+        {% if match_index < 4 %}
+            <p class="q-final"> <span>Quarter Final - </span>{{match.team1.name}} {{match.match_score}}  {{match.team2.name}}</p>
+
+            {% elif match_index < 6 %}
+            <!-- Semifinals -->
+            <p class="s-final">  <span>Semi Final - </span>{{ match.team1.name }} {{ match.match_score }} {{ match.team2.name }} </p>
+        {% else %}
+            <!-- Final -->
+            <h4>The Final</h4>
+
+            <p class="final"> {{ match.team1.name }} {{ match.match_score }} {{ match.team2.name }} </p>
+        {% endif %}
+            {% endfor%}
     </div>
 
 

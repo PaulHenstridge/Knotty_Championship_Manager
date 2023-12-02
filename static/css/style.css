@@ -321,6 +321,14 @@ img {
     margin-left: 0.5rem;
   }
   
+  .s-final{
+    color:rgb(17, 173, 51);
+    font-size: 1.1rem;
+  }
+  .final{
+    color:rgb(237, 203, 12);
+    font-size: 1.6rem;
+  }
 
 .hidden {
     display: none;

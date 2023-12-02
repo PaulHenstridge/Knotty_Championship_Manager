@@ -5,7 +5,7 @@ from utils.action_reports import *
 
 
 class Match:
-    def __init__(self, team1, team2, completed, winner=None, id=None):
+    def __init__(self, team1, team2, completed=False, winner=None, id=None):
         self.team1 = team1
         self.team2 = team2
         self.completed = completed
