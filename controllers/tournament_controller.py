@@ -44,8 +44,7 @@ def play_tournament():
     tournament = tournament_repository.select(int(tourney_id))
 
     tournament.run_tourney(tournament.teams)
-
-    print("Tournamnt after runtourney ^^^^^", tournament.id, tourney_id)
+    team_repository.update(tournament.winner)
 
     tournament_repository.update(tournament)
     # some way to add all the games played in the tourney....?

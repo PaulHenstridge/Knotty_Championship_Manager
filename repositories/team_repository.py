@@ -6,11 +6,11 @@ from models.team import Team
 # add a team to the league
 def save(team):
     sql = """
-    INSERT INTO teams (name, attack, defence, matches_played, wins) 
-    VALUES (%s, %s, %s, %s, %s)
+    INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
     RETURNING id;
     """
-    values = [team.name, team.attack, team.defence, team.matches_played, team.wins]
+    values = [team.name, team.attack, team.defence, team.matches_played, team.wins, team.cup_wins, team.bank_balance]
     results = run_sql(sql, values)
     team.id = results[0]["id"]
     return team.id
@@ -28,6 +28,7 @@ def select_all():
             result["defence"],
             result["matches_played"],
             result["wins"],
+            result["cup_wins"],
             result["bank_balance"],
             result["id"],
         )
@@ -52,6 +53,7 @@ def select(id):
             result["defence"],
             result["matches_played"],
             result["wins"],
+            result["cup_wins"],
             result["bank_balance"],
             result["id"],
         )
@@ -72,7 +74,7 @@ def delete(id):
 # edit/update a team
 def update(team):
     sql = """
-    UPDATE teams SET (name, attack, defence, matches_played, wins, bank_balance) = (%s,%s,%s,%s,%s, %s)
+    UPDATE teams SET (name, attack, defence, matches_played, wins, cup_wins, bank_balance) = (%s,%s,%s,%s,%s,%s,%s)
     WHERE id = %s
     """
     values = [
@@ -81,6 +83,7 @@ def update(team):
         team.defence,
         team.matches_played,
         team.wins,
+        team.cup_wins,
         team.bank_balance,
         team.id,
     ]

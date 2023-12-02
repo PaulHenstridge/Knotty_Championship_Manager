@@ -6,7 +6,7 @@
     <div class="col-header">Defence</div>
     <div class="col-header">Played</div>
     <div class="col-header">Won</div>
-    <div class="col-header">info</div>
+    <div class="col-header">Cup Wins</div>
 </div>
 {% for team in teams %}
 <a href="/teams/{{team.id}}" class="team-grid-container">
@@ -15,6 +15,7 @@
     <h4>{{team.defence}}</h4>
     <h4> {{team.matches_played}}</h4>
     <h4>{{team.wins}}</h4>
+    <h4>{{team.cup_wins}}</h4>
     <!-- <a href="/teams/{{team.id}}"> <i class="fa fa-info-circle" aria-hidden="true"></i></a> -->
 </a>
 

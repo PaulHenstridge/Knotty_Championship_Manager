@@ -32,6 +32,7 @@ class Tournament:
             return self.run_tourney(new_teams)
         else:
             self.winner = teams[0]
+            self.winner.cup_wins +=1
             self.completed = True
             return self.winner
         

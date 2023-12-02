@@ -12,6 +12,7 @@ CREATE TABLE teams (
     defence INT,
     matches_played INT,
     wins INT,
+    cup_wins INT,
     bank_balance INT
 );
 
@@ -58,14 +59,14 @@ CREATE TABLE tournament_teams (
 
 
 
-INSERT INTO teams (name, attack, defence, matches_played, wins, bank_balance) 
-VALUES ('Lybster', 75, 25, 1, 1, 5000);
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Lybster', 75, 25, 1, 1, 0, 5000);
 
-INSERT INTO teams (name, attack, defence, matches_played, wins, bank_balance) 
-VALUES ('Dunbeath', 55, 85, 1, 0, 5000);
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Dunbeath', 55, 85, 1, 0, 0, 5000);
 
-INSERT INTO teams (name, attack, defence, matches_played, wins, bank_balance) 
-VALUES ('Kiess', 45, 55, 0, 0, 5000);
+INSERT INTO teams (name, attack, defence, matches_played, wins, cup_wins, bank_balance) 
+VALUES ('Kiess', 45, 55, 0, 0, 5, 5000);
 
 INSERT INTO matches (team1_id, team2_id, completed, winner_id)
 VALUES (1,2,'t',1);
