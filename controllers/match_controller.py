@@ -3,6 +3,7 @@ from flask import Blueprint
 
 import repositories.team_repository as team_repository
 import repositories.match_repository as match_repository
+import repositories.player_repository as player_repository
 
 matches_blueprint = Blueprint("matches", __name__)
 
@@ -29,9 +30,15 @@ def save_match():
 def play():
     match_id = request.form["match-id"]
     match = match_repository.select(int(match_id))
-    match.play()
-
+    goal_scorers = match.play()
+    print("GOal Scorers in match controller  ", goal_scorers )
     match_repository.update(match)
     team_repository.update_stats(match.team1)
     team_repository.update_stats(match.team2)
+
+    for player in goal_scorers:
+        if player:
+            player.goals +=1
+            player_repository.update(player)
+
     return render_template("/matches/match.html", match=match)

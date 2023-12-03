@@ -21,10 +21,10 @@ class Team:
             self.wins += 1
 
     def generate_players(self, team_type):
-        
         for i in range(10):
             player = generate_player(self.name, self.id, team_type, i)
             self.players.append(player)
+            
         self.set_skill_levels()   
 
         return self.players
@@ -41,9 +41,8 @@ class Team:
         self.defence = round(self.defence/6)
 
     def select_scorer(self):
-        print("self.players when select scorer is called: ", self.players)
-        defenders = [player for player in self.players if player.position == "Defender"]
-        attackers = [player for player in self.players if player.position == "Attacker"]
+        defenders = [player for player in self.players if player.position == "Defence"]
+        attackers = [player for player in self.players if player.position == "Attack"]
 
         if random.choice(range(100)) < 70:
             scorer = random.choice(attackers)

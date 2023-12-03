@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 
 from models.team import Team
+from models.player import Player
 
 
 # add a team to the league
@@ -38,28 +39,54 @@ def select_all():
 
 # show an individual team by id
 def select(id):
-    team = None
-    sql = """
-        SELECT * FROM teams WHERE id = %s
-    """
-    values = [id]
-    results = run_sql(sql, values)
+    if id != None:
+        
 
-    if results:
-        result = results[0]
-        team = Team(
-            result["name"],
-            result["attack"],
-            result["defence"],
-            result["matches_played"],
-            result["wins"],
-            result["cup_wins"],
-            result["bank_balance"],
-            result["id"],
-        )
+        print("ID passed to select, returning no results ", id)
+        team = None
+        sql = """
+            SELECT * FROM teams WHERE id = %s
+        """
+        values = [id]
+        results = run_sql(sql, values)
+
+        if results:
+            result = results[0]
+            team = Team(
+                result["name"],
+                result["attack"],
+                result["defence"],
+                result["matches_played"],
+                result["wins"],
+                result["cup_wins"],
+                result["bank_balance"],
+                result["id"],
+            )
+
+                # Fetch players belonging to the team
+            sql = "SELECT * FROM players WHERE team_id = %s"
+            values = [id]
+            player_results = run_sql(sql, values)
+            players = [Player(  player_result["name"],
+                                player_result["position"],
+                                player_result["skill_level"],
+                                team.name, 
+                                player_result["team_id"], 
+                                player_result["goals"], 
+                                player_result["img_url"], 
+                                player_result["id"]
+                                ) 
+                                for player_result in player_results] 
+
+            team.players = players
+
+        else:
+            print("No results from select in team repo")
+        
+        print("Team.players returned from team_repo select-->", team.players)
+        return team
     else:
-        print("No results from select in team repo")
-    return team
+        print("None passed to select in team repo")
 
 
 # remove a team from the league

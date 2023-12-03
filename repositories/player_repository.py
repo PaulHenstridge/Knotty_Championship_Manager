@@ -6,11 +6,11 @@ from models.player import Player
 # add a player
 def save(player):
     sql = """
-    INSERT INTO players (name, position, skill_level, team_id, img_url) 
-    VALUES (%s, %s, %s, %s, %s)
+    INSERT INTO players (name, position, skill_level, team_id, goals, img_url) 
+    VALUES (%s, %s, %s, %s, %s, %s)
     RETURNING id;
     """
-    values = [player.name, player.position, player.skill_level, player.team_id, player.img_url]
+    values = [player.name, player.position, player.skill_level, player.team_id, player.goals, player.img_url]
     results = run_sql(sql, values)
     player.id = results[0]["id"]
 
@@ -19,7 +19,7 @@ def save(player):
 def select_all():
     players = []
     sql = """
-        SELECT players.name, players.id, players.position, players.skill_level, players.img_url, teams.name AS team_name, teams.id AS team_id
+        SELECT players.name, players.id, players.position, players.skill_level, players.goals, players.img_url, teams.name AS team_name, teams.id AS team_id
         FROM players 
         JOIN teams ON players.team_id = teams.id
       """
@@ -31,6 +31,7 @@ def select_all():
             result["skill_level"],
             result["team_name"],
             result["team_id"],
+            result["goals"],
             result["img_url"],
             result["id"]       
         )
@@ -42,7 +43,7 @@ def select_all_by_team_id(team_id):
     print('teamid in repository ', team_id)
     players = []
     sql = """
-        SELECT players.name, players.id, players.position, players.skill_level, players.img_url, teams.name AS team_name, teams.id AS team_id
+        SELECT players.name, players.id, players.position, players.skill_level, players.goals, players.img_url, teams.name AS team_name, teams.id AS team_id
         FROM players 
         JOIN teams ON players.team_id = teams.id
         WHERE teams.id = %s
@@ -57,6 +58,7 @@ def select_all_by_team_id(team_id):
             result["skill_level"],
             result["team_name"],
             result["team_id"],
+            result["goals"],
             result["img_url"],
             result["id"]       
         )
@@ -68,7 +70,7 @@ def select_all_by_team_id(team_id):
 def select(id):
     player = None
     sql = """
-        SELECT players.name, players.id, players.position, players.skill_level, players.img_url, teams.name AS team_name , teams.id AS team_id
+        SELECT players.name, players.id, players.position, players.skill_level, players.goals, players.img_url, teams.name AS team_name , teams.id AS team_id
         FROM players 
         JOIN teams ON players.team_id = teams.id
         WHERE players.id = %s
@@ -84,6 +86,7 @@ def select(id):
             result["skill_level"],
             result["team_name"],
             result["team_id"],
+            result["goals"],
             result["img_url"],
             result["id"]
         )
@@ -102,7 +105,7 @@ def delete(id):
 # edit/update a player
 def update(player):
     sql = """
-    UPDATE players SET (name, position, skill_level, team_id) = (%s,%s,%s,%s)
+    UPDATE players SET (name, position, skill_level, team_id, goals) = (%s,%s,%s,%s,%s)
     WHERE id = %s
     """
     values = [
@@ -110,7 +113,8 @@ def update(player):
         player.position,
         player.skill_level,
         player.team_id,
-        player.id
+        player.id, 
+        player.goals
        
     ]
     run_sql(sql, values)

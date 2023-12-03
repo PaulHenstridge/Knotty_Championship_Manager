@@ -3,6 +3,7 @@ import math
 from itertools import zip_longest
 from utils.action_reports import *
 
+from models.player import Player
 
 class Match:
     def __init__(self, team1, team2, completed=False, winner=None, id=None):
@@ -16,6 +17,7 @@ class Match:
         self.report = []
 
     def play(self):
+        scorers = []
         teams = [ self.team1, self.team2]
         opportunities = self.calc_opportunities()
         print("oportunities ", opportunities)
@@ -30,6 +32,9 @@ class Match:
             opportunities[idx] -=1
 
             is_goal, goal_scorer = self.attempt_on_goal(teams[idx], teams[idx^1], idx)
+            print("Goal by : ", goal_scorer.name)
+            if isinstance(goal_scorer, Player):
+                scorers.append(goal_scorer)
 
             self.generate_report(teams[idx], teams[idx^1], is_goal, goal_scorer)
 
@@ -38,6 +43,8 @@ class Match:
         self.winner = self.declare_winner()
         self.winner.wins += 1
         self.completed = True
+        print("Scorers List in match.py", scorers )
+        return scorers
 
 
     def calc_opportunities(self):
