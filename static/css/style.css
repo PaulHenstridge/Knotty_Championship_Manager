@@ -287,6 +287,10 @@ label {
     font-family: var(--ff-text);
 }
 
+input, select, option{
+    padding:0.3rem 0;
+}
+
 p {
     font-family: var(--ff-text);
     text-align: justify;

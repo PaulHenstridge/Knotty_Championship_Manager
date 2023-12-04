@@ -40,9 +40,6 @@ def select_all():
 # show an individual team by id
 def select(id):
     if id != None:
-        
-
-        print("ID passed to select, returning no results ", id)
         team = None
         sql = """
             SELECT * FROM teams WHERE id = %s

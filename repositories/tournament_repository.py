@@ -59,7 +59,6 @@ def select(id):
         completed = result["completed"]
         
         tournament = Tournament(teams, winner, completed, id_pair[0])
-        print("tournament form tournament repo select", tournament)
         return tournament
 
 # update winner of tournament

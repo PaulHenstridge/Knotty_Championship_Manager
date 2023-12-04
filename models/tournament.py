@@ -14,7 +14,6 @@ class Tournament:
 
 
     def run_tourney(self, teams):
-        print("IN RUN TOURNY", len(teams), teams)
         for team in teams:
             print(team.name)
         if len(teams) > 1:
