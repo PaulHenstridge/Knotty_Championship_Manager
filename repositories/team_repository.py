@@ -72,7 +72,6 @@ def select(id):
                                 player_result["skill_level"],
                                 team.name, 
                                 player_result["team_id"], 
-                                player_result["goals"], 
                                 player_result["img_url"], 
                                 player_result["id"]
                                 ) 

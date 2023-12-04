@@ -5,7 +5,7 @@ from utils.local_names import firsts as local_first_names
 from utils.local_names import lasts as local_last_names
 
 def generate_name():
-    api_url = "https://randomuser.me/api/"
+    api_url = "https://randomuser.me/api/?gender=male"
     response = requests.get(api_url)
 
     if response.status_code == 200:

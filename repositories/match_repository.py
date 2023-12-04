@@ -18,7 +18,6 @@ def save(team1_id, team2_id):
 
     team1 = team_repository.select(team1_id)
     team2 = team_repository.select(team2_id)
-    print("*** players in team at L21 match repo***", team1.players,)
 
     result = run_sql(sql, values)
     return Match(team1, team2, False, None, result[0]["id"])

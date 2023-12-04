@@ -1,17 +1,17 @@
 import random
 
 class Player:
-    def __init__(self, name, position, skill_level, team_name, team_id, goals=0, img_url=None, id=None):
+    def __init__(self, name, position, skill_level, team_name, team_id, img_url=None, id=None):
         self.name = name 
         self.position = position
         self.skill_level = skill_level
         self.team_name = team_name
         self.team_id = team_id
-        self.goals = goals
         self.img_url = img_url
         self.id = id
         self.value = self.calc_value()
-
+        self.goals = 0
+        
     def calc_value(self):
         if hasattr(self, 'value'):
             return self.value

@@ -136,7 +136,7 @@ button {
 
 .player-grid-container{
     display: grid;
-    grid-template-columns:6fr 2fr 2fr 2fr;
+    grid-template-columns:8fr 2fr 2fr 2fr 2fr;
     /* background-color: #ffaa00; */
     box-shadow: inset 4px 2px 6px #2c252577;
     margin-bottom: 0.1rem;

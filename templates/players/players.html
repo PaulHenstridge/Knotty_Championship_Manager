@@ -6,6 +6,7 @@
     <div class="col-header">Skill</div>
     <div class="col-header">Team</div>
     <div class="col-header">Value</div>
+    <div class="col-header">Goals</div>
 
 </div>
 {% for player in players %}
@@ -16,6 +17,7 @@
     <h4>{{player.skill_level}}</h4>
     <h4> {{player.team_name}}</h4>
     <h4> £{{player.value}}</h4>
+    <h4> {{player.goals}}</h4>
 </a>
 
 {% endfor %}

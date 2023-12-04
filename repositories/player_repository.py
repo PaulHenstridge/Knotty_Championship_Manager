@@ -10,6 +10,7 @@ def save(player):
     VALUES (%s, %s, %s, %s, %s, %s)
     RETURNING id;
     """
+    player.goals = 0
     values = [player.name, player.position, player.skill_level, player.team_id, player.goals, player.img_url]
     results = run_sql(sql, values)
     player.id = results[0]["id"]
@@ -31,10 +32,10 @@ def select_all():
             result["skill_level"],
             result["team_name"],
             result["team_id"],
-            result["goals"],
             result["img_url"],
             result["id"]       
         )
+        player.goals = result["goals"]
         players.append(player)
     return players
 
@@ -58,10 +59,10 @@ def select_all_by_team_id(team_id):
             result["skill_level"],
             result["team_name"],
             result["team_id"],
-            result["goals"],
             result["img_url"],
             result["id"]       
         )
+        player.goals = result["goals"]
         players.append(player)
     return players
 
@@ -86,7 +87,6 @@ def select(id):
             result["skill_level"],
             result["team_name"],
             result["team_id"],
-            result["goals"],
             result["img_url"],
             result["id"]
         )
@@ -104,6 +104,7 @@ def delete(id):
 
 # edit/update a player
 def update(player):
+    print("Player and goals into update in player repo 108 ",player.name, player.goals)
     sql = """
     UPDATE players SET (name, position, skill_level, team_id, goals) = (%s,%s,%s,%s,%s)
     WHERE id = %s
@@ -113,10 +114,10 @@ def update(player):
         player.position,
         player.skill_level,
         player.team_id,
-        player.id, 
-        player.goals
-       
+        player.goals,
+        player.id 
     ]
+
     run_sql(sql, values)
 
 
