@@ -32,7 +32,6 @@ class Match:
             opportunities[idx] -=1
 
             is_goal, goal_scorer = self.attempt_on_goal(teams[idx], teams[idx^1], idx)
-            print("Goal by : ", goal_scorer.name)
             if isinstance(goal_scorer, Player):
                 scorers.append(goal_scorer)
 

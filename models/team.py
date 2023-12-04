@@ -25,6 +25,7 @@ class Team:
             player = generate_player(self.name, self.id, team_type, i)
             self.players.append(player)
             
+
         self.set_skill_levels()   
 
         return self.players

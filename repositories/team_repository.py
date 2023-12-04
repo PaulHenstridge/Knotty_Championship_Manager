@@ -83,7 +83,6 @@ def select(id):
         else:
             print("No results from select in team repo")
         
-        print("Team.players returned from team_repo select-->", team.players)
         return team
     else:
         print("None passed to select in team repo")

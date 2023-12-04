@@ -5,6 +5,8 @@ import repositories.team_repository as team_repository
 import repositories.match_repository as match_repository
 import repositories.player_repository as player_repository
 
+from models.player import Player
+
 matches_blueprint = Blueprint("matches", __name__)
 
 
@@ -37,7 +39,7 @@ def play():
     team_repository.update_stats(match.team2)
 
     for player in goal_scorers:
-        if player:
+         if isinstance(player, Player):
             player.goals +=1
             player_repository.update(player)
 
