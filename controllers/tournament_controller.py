@@ -27,7 +27,6 @@ def save_tournament():
         request.form['team7'],
         request.form['team8']
         ]
-    print("TEAM_IDS-->", team_ids)
     teams = []
     for id in team_ids:
         team = team_repository.select(int(id))
@@ -45,6 +44,9 @@ def play_tournament():
 
     tournament.run_tourney(tournament.teams)
     team_repository.update(tournament.winner)
+
+    for match in tournament.matches:
+        match_repository.update(match)
 
     tournament_repository.update(tournament)
     # some way to add all the games played in the tourney....?

@@ -1,6 +1,4 @@
 import random
-import math
-from itertools import zip_longest
 from utils.action_reports import *
 
 from models.player import Player
@@ -42,7 +40,6 @@ class Match:
         self.winner = self.declare_winner()
         self.winner.wins += 1
         self.completed = True
-        print("Scorers List in match.py", scorers )
         return scorers
 
 
@@ -61,25 +58,13 @@ class Match:
             shot = random.random() * 100
             if shot < chance_of_scoring:
                 self.match_score[idx] += 1
-# TODO here --> 
                 scorer = attacking_team.select_scorer() 
-                # 80-20 towards attackers,
-                # then choose randomly from the group
-
-            # this method returns True, scorer or False, None
-            # pass scorer to generate_report()
-
-            # add [self.goal_scorers] to match, add each scorer to it
-
-            # where play is called in controller, use [goal_scorers] to update DB
-           
-            # the DB needs to be updated to take goals scored on in players
-            # matches need updated to take goal_scorers
-            # both models changed, and all creation of instances updated
 
                 return True, scorer
             else:
                 return False, None
+            
+
             
     def generate_report(self, team, other_team, is_goal, goal_scorer):
         if is_goal:

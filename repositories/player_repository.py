@@ -90,6 +90,7 @@ def select(id):
             result["img_url"],
             result["id"]
         )
+        player.goals = result["goals"]
     return player
 
 

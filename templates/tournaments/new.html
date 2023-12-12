@@ -4,62 +4,22 @@
 <form action="/tournaments/new" method="POST" class="input-form">
     <fieldset>
         <legend>Select teams to play a tournament</legend>
-        <label for="team1">Team1</label>
-        <select name="team1" id="team1">
+        <!--  looping over teams to create selects -->
+        <!-- setting a different default value for each -->
+       {% for i in range(1, 9) %}
+        <label for="team{{ i }}">Team{{ i }}</label>
+        <select name="team{{ i }}" id="team{{ i }}">
+            {% set default_selected = false %}
             {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
+                {% if loop.index == i and not default_selected %}
+                    <option value="{{ team.id }}" selected>{{ team.name }}</option>
+                    {% set default_selected = true %}
+                {% else %}
+                    <option value="{{ team.id }}">{{ team.name }}</option>
+                {% endif %}
             {% endfor %}
         </select>
-
-        <label for="team2">Team2</label>
-        <select name="team2" id="team2">
-            {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-
-        <label for="team3">Team3</label>
-        <select name="team3" id="team3">
-            {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-
-        <label for="team4">Team4</label>
-        <select name="team4" id="team4">
-            {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-
-        <label for="team5">Team5</label>
-        <select name="team5" id="team5">
-            {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-
-        <label for="team6">Team6</label>
-        <select name="team6" id="team6">
-            {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-
-        <label for="team7">Team7</label>
-        <select name="team7" id="team7">
-            {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-
-        <label for="team8">Team8</label>
-        <select name="team8" id="team8">
-            {% for team in all_teams %}
-            <option value="{{team.id}}">{{team.name}}</option>
-            {% endfor %}
-        </select>
-
+        {% endfor %}
         <button type="submit">Go to tournament</button>
     </fieldset>
 

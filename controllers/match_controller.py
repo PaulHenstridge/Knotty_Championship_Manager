@@ -33,7 +33,6 @@ def play():
     match_id = request.form["match-id"]
     match = match_repository.select(int(match_id))
     goal_scorers = match.play()
-    print("GOal Scorers in match controller  ", goal_scorers )
     match_repository.update(match)
     team_repository.update_stats(match.team1)
     team_repository.update_stats(match.team2)
