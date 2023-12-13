@@ -29,7 +29,6 @@ def new_player():
 @players_blueprint.route("/players/new", methods=["POST"])
 def add_player():
     try:
-        print("in add player ",request.form)
         name = request.form["player_name"]
         position = request.form["position"]
         skill_level = request.form["skill"]
@@ -41,7 +40,6 @@ def add_player():
         # create new player obj
         _,img_url = generate_name()
         player = Player(name, position, skill_level, team_name, team_id, img_url)
-        print("player to be added: ",player)
         player_repository.save(player)
         return render_template("/players/player.html", player=player)
     except Exception as e:
@@ -73,12 +71,6 @@ def edit_player():
     player = Player(name, position, skill_level, team_id, id)
     player_repository.update(player)
     return render_template("/players/player.html", player=player)
-
-
-# @teams_blueprint.route("/teams/<id>/matches")
-# def matches_by_team(id):
-#     matches = match_repository.select_by_team((id))
-#     return render_template("/matches/matches.html", matches=matches)
 
 
 @players_blueprint.route("/players/<id>/delete")

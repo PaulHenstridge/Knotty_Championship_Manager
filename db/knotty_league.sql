@@ -53,8 +53,8 @@ CREATE TABLE tournament_teams (
     tournament_id INTEGER,
     team_id INTEGER,
     PRIMARY KEY (tournament_id, team_id),
-    FOREIGN KEY (tournament_id) REFERENCES tournaments(id),
-    FOREIGN KEY (team_id) REFERENCES teams(id)
+    FOREIGN KEY (tournament_id) REFERENCES tournaments(id) ON DELETE CASCADE,
+    FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
 );
 
 

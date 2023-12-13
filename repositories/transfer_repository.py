@@ -9,7 +9,6 @@ import repositories.player_repository as player_repository
 
 # create a new transfer
 def save(transfer): # player, team_from, team_to, transfer_fee
-    print("&&&&& transfer being saved", transfer.team_from.id)
 
     player_id = transfer.player.id
     team_from_id = transfer.team_from.id
@@ -23,12 +22,9 @@ def save(transfer): # player, team_from, team_to, transfer_fee
     RETURNING id
     """
     values = [player_id, team_from_id, team_to_id, transfer_fee, status]
-    print(values)
 
-    result = run_sql(sql, values)
-    print(result)
+    result = run_sql(sql, values)    
     transfer.id = result[0]["id"]
-    print("transfer in trans repo :", transfer.__dict__)
     return transfer
 
 

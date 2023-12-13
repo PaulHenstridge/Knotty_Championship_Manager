@@ -15,9 +15,6 @@ def generate_name():
         last_name = data["results"][0]["name"]["last"]
         thumbnail_url = data["results"][0]["picture"]["thumbnail"]
 
-        print(f"First Name: {first_name}")
-        print(f"Last Name: {last_name}")
-        print(f"Thumbnail URL: {thumbnail_url}")
 
         return f"{first_name} {last_name}", thumbnail_url
     else:
@@ -35,10 +32,6 @@ def generate_local_name():
         last_name = random.choice(local_last_names)
 
         thumbnail_url = data["results"][0]["picture"]["thumbnail"]
-
-        print(f"First Name: {first_name}")
-        print(f"Last Name: {last_name}")
-        print(f"Thumbnail URL: {thumbnail_url}")
 
         return f"{first_name} {last_name}", thumbnail_url
     else:

@@ -39,7 +39,6 @@ def play():
 
     for player in goal_scorers:
          if isinstance(player, Player):
-            print("updating a goal by ",player.name)
             player.goals +=1
             player_repository.update(player)
 

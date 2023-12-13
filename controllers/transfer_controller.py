@@ -51,8 +51,6 @@ def transfer_by_id(id):
     return render_template("/transfers/transfer.html", transfer=transfer)
 
 
-
-
 @transfers_blueprint.route("/transfer/<id>/accept")
 def accept_transfer(id):
     print("Accepted!")
@@ -80,16 +78,3 @@ def decline_transfer(id):
     transfer_repository.update(transfer)
     return render_template("/transfers/transfer.html", transfer=transfer)
 
-
-
-
-# @transfers_blueprint.route("/transfers/play", methods=["POST"])
-# def play():
-#     transfer_id = request.form["transfer-id"]
-#     transfer = transfer_repository.select(int(transfer_id))
-#     transfer.play()
-
-#     transfer_repository.update(transfer)
-#     team_repository.update_stats(match.team1)
-#     team_repository.update_stats(match.team2)
-#     return render_template("/transfers/match.html", match=match)

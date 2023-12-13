@@ -18,7 +18,6 @@ class Match:
         scorers = []
         teams = [ self.team1, self.team2]
         opportunities = self.calc_opportunities()
-        print("oportunities ", opportunities)
 
         self.team1.matches_played += 1
         self.team2.matches_played += 1
@@ -65,7 +64,6 @@ class Match:
                 return False, None
             
 
-            
     def generate_report(self, team, other_team, is_goal, goal_scorer):
         if is_goal:
             message = random.choice(score_reports).format(

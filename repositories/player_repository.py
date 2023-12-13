@@ -41,7 +41,6 @@ def select_all():
 
  # select all by team id
 def select_all_by_team_id(team_id):
-    print('teamid in repository ', team_id)
     players = []
     sql = """
         SELECT players.name, players.id, players.position, players.skill_level, players.goals, players.img_url, teams.name AS team_name, teams.id AS team_id
@@ -51,7 +50,6 @@ def select_all_by_team_id(team_id):
       """
     values = [team_id]
     results = run_sql(sql,values)
-    print("results in repository ", results)
     for result in results:
         player = Player(
             result["name"],
@@ -105,7 +103,6 @@ def delete(id):
 
 # edit/update a player
 def update(player):
-    print("Player and goals into update in player repo 108 ",player.name, player.goals)
     sql = """
     UPDATE players SET (name, position, skill_level, team_id, goals) = (%s,%s,%s,%s,%s)
     WHERE id = %s

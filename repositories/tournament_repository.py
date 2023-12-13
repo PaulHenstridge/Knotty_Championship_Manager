@@ -14,7 +14,6 @@ def save(tournament):
     """
     values = [None, 'f']
     result = run_sql(sql, values)
-    print("REEESUlT-->", result)
     tourney_id = result[0]["id"]
 
     teams = tournament.teams
@@ -38,7 +37,6 @@ def save(tournament):
 
 # select a tournament by id
 def select(id):
-    print("SELECT CALLED!")
     tournament = None
     sql = "SELECT * FROM tournaments WHERE id = %s"
     values = [id]
@@ -46,7 +44,6 @@ def select(id):
 
     if results:
         result = results[0]
-        print("Result in repo select 49", result)
         sql = "SELECT * FROM tournament_teams WHERE tournament_id = %s"
         values = [result["id"]]
         ids = run_sql(sql, values)
