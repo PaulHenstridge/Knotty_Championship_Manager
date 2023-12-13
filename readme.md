@@ -1,19 +1,24 @@
-# Knotty League - Full Stack Sports League Simulation
+# Knotty Championship Manager - Full Stack Sports League Simulation
 
 A RESTful, full-stack application that simulates a sports league, using Python, Flask, and PostgreSQL.
 
 ## Overview
 
-This application provides a simulation of a sports league, in which teams play matches against each other and compete in a league. Users can create, read, update, and delete (CRUD) both teams and individual players, and schedule matches between them. Simulated matches feature a match report of the action, and progress is shown on the league table based on cumulative match results.
+Create a team, buy and sell players, play matches, enter tournaments and rise to the top of the league!
+
+A Python project built in the Model-View-Controller (MVC) pattern, with full CRUD functionlity and server rendered client.
+
 
 ## Features
 
 - **Team Management**: Add new teams to the league, edit their details, or remove teams no longer participating.
 - **Player Management**: Add and remove players from teams, edit players details and attributes.
-- **Match Scheduling**: Set up matches between teams at specified times.
+- **Transfer Market**: Buy and sell players, negotiate transfer fees.
+- **Schedule and Play MAtches**: Set up matches between teams, and see how they compare.
+- **Full Action Match Reports**:View reports of all the action, goals and goal scorers.
+- **Play Knockout Tournaments**:Teans play each other to win the Cup.
 - **League Table**: Keep track of team standings in the league based on match results.
-- **Live Action Match Reports**:View reports of all the action.
-
+  
 ## Tech Stack
 
 - **Back End**: Python and Flask
@@ -55,7 +60,7 @@ A brief overview of how to use the application:
 - **Viewing all a team's matches**: '/teams/{id}/matches' - choose "view matches" from the team's info page.  Displays all matches past and future involving team.
 - **Adding a team**: '/teams/new' - input team name and attributes.
 - **Removing a team**: '/teams/{id}/delete' - choose delete from the team's info page.
-- **Editing a team's attributes**: '/teams/2/edit' - choose edit form team's info page. provide new value(s) for team attributes.
+- **Editing a team's attributes**: '/teams/{id}/edit' - choose edit form team's info page. provide new value(s) for team attributes.
 
 ## Contributing
 
