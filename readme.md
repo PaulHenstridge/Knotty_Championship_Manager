@@ -11,13 +11,13 @@ A Python project built in the Model-View-Controller (MVC) pattern, with full CRU
 
 ## Features
 
-- **Team Management**: Add new teams to the league, edit their details, or remove teams no longer participating.
-- **Player Management**: Add and remove players from teams, edit players details and attributes.
+- **Team Management**: Add, edit, or delete teams.
+- **Player Management**: Add, edit, or delete players.
 - **Transfer Market**: Buy and sell players, negotiate transfer fees.
-- **Schedule and Play MAtches**: Set up matches between teams, and see how they compare.
-- **Full Action Match Reports**:View reports of all the action, goals and goal scorers.
+- **Schedule and Play MAtches**: Set up and play matches.
+- **Full Action Match Reports**:View match reports, including near misses and goal scorers.
 - **Play Knockout Tournaments**:Teans play each other to win the Cup.
-- **League Table**: Keep track of team standings in the league based on match results.
+- **League Table**: Team standings in the league based on match results.
   
 ## Tech Stack
 
